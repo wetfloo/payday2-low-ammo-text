@@ -17,7 +17,7 @@ end
 local function add_hook()
 	Hooks:PostHook(hook_class, hook_fn, "LowAmmoText_set_teammate_ammo_amount", function(_self)
 		local function shadowed_text(panel, params, text_color, shadow_color, shadow_offset)
-			local function apply_and_render(panel, params, name, color, offset)
+			local function apply_and_render(name, color, offset)
 				local params_owned = {}
 
 				for k, v in pairs(params) do
@@ -51,7 +51,7 @@ local function add_hook()
 			if shadow_prev and alive(shadow_prev) then
 				shadow_prev:set_text(params.text)
 			else
-				apply_and_render(panel, params, shadow_name, shadow_color, shadow_offset)
+				apply_and_render(shadow_name, shadow_color, shadow_offset)
 			end
 
 			-- Re-use previous text instance if we simply update text.
@@ -59,7 +59,7 @@ local function add_hook()
 			if text_prev and alive(text_prev) then
 				text_prev:set_text(params.text)
 			else
-				apply_and_render(panel, params, text_name, text_color, nil)
+				apply_and_render(text_name, text_color, nil)
 			end
 		end
 
