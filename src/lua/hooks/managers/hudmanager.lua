@@ -36,29 +36,36 @@ local function apply_and_render(panel, params, name, color, offset)
 		end
 	end
 
-	panel:text(params_owned)
+	return panel:text(params_owned)
 end
 
 local function shadowed_text(panel, params, text_color, shadow_color, shadow_offset)
+	local result_text
+	local result_shadow
+
 	local text_name = params.name
 	local shadow_name = params.name .. "_text_shadow"
 
 	-- Re-use previous text shadow instance if we simply update text.
 	-- Shadows must be rendered *before* text to not overlap.
-	local shadow_prev = panel:child(shadow_name)
-	if shadow_prev and alive(shadow_prev) then
-		shadow_prev:set_text(params.text)
+	local prev_shadow = panel:child(shadow_name)
+	if prev_shadow and alive(prev_shadow) then
+		result_shadow = prev_shadow
+		prev_shadow:set_text(params.text)
 	else
-		apply_and_render(panel, params, shadow_name, shadow_color, shadow_offset)
+		result_shadow = apply_and_render(panel, params, shadow_name, shadow_color, shadow_offset)
 	end
 
 	-- Re-use previous text instance if we simply update text.
-	local text_prev = panel:child(text_name)
-	if text_prev and alive(text_prev) then
-		text_prev:set_text(params.text)
+	local prev_text = panel:child(text_name)
+	if prev_text and alive(prev_text) then
+		result_text = prev_text
+		prev_text:set_text(params.text)
 	else
-		apply_and_render(panel, params, text_name, text_color, nil)
+		result_text = apply_and_render(panel, params, text_name, text_color, nil)
 	end
+
+	return result_text, result_shadow
 end
 
 local function add_hook()
@@ -86,17 +93,20 @@ local function add_hook()
 
 		local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_FULLSCREEN_PD2)
 
-		local center_w = hud.panel:w() / 2
+		local center_x = hud.panel:w() / 2
 		local center_h = hud.panel:h() / 2
 
-		shadowed_text(hud.panel, {
+		local text, shadow = shadowed_text(hud.panel, {
 			name = "low_ammo_text__test_text",
 			text = string.format("%d :: %d", current_clip, current_left),
 			font = tweak_data.menu.pd2_medium_font,
 			font_size = 16,
-			x = center_w,
-			y = center_h,
 		}, Color.white, Color.black, { x = 1, y = 1 })
+
+		if text then
+			text:set_center(center_x, center_y)
+		end
+		-- shadow:set_center(center_x, center_y)
 
 		-- if low_ammo_clip and not out_of_ammo and not low_ammo then
 		-- 	return hook_indicator("low_ammo_clip", { low_ammo, low_ammo_clip, out_of_ammo })
