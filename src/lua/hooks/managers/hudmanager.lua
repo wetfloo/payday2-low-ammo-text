@@ -14,12 +14,22 @@ elseif PDTHHud or VoidUI or Holo then
 	delayed = true
 end
 
-local function apply_and_render(panel, params, name, color, offset)
+local function fix_text_size(text)
+	local x, y, w, h = text:text_rect()
+	text:set_size(w, h)
+	return text, x, y, w, h
+end
+
+local function apply_and_render(panel, params, name, color)
 	local params_owned = {}
 
 	for k, v in pairs(params) do
 		params_owned[k] = v
 	end
+
+	-- We expect the caller to provide us the correct coordinates later.
+	params_owned.x = nil
+	params_owned.y = nil
 
 	if name then
 		params_owned.name = name
@@ -27,19 +37,11 @@ local function apply_and_render(panel, params, name, color, offset)
 	if color then
 		params_owned.color = color
 	end
-	if offset then
-		if params_owned.x and offset.x then
-			params_owned.x = params_owned.x + offset.x
-		end
-		if params_owned.y and offset.y then
-			params_owned.y = params_owned.y + offset.y
-		end
-	end
 
 	return panel:text(params_owned)
 end
 
-local function shadowed_text(panel, params, text_color, shadow_color, shadow_offset)
+local function shadowed_text(panel, params, shadow_offset)
 	local result_text
 	local result_shadow
 
@@ -51,18 +53,23 @@ local function shadowed_text(panel, params, text_color, shadow_color, shadow_off
 	local prev_shadow = panel:child(shadow_name)
 	if prev_shadow and alive(prev_shadow) then
 		result_shadow = prev_shadow
-		prev_shadow:set_text(params.text)
+		result_shadow:set_text(params.text)
 	else
-		result_shadow = apply_and_render(panel, params, shadow_name, shadow_color, shadow_offset)
+		result_shadow = apply_and_render(panel, params, shadow_name, Color.black)
+		fix_text_size(result_shadow)
+		result_shadow:set_center(params.x, params.y)
+		result_shadow:move(shadow_offset.x, shadow_offset.y)
 	end
 
 	-- Re-use previous text instance if we simply update text.
 	local prev_text = panel:child(text_name)
 	if prev_text and alive(prev_text) then
 		result_text = prev_text
-		prev_text:set_text(params.text)
+		result_text:set_text(params.text)
 	else
-		result_text = apply_and_render(panel, params, text_name, text_color, nil)
+		result_text = apply_and_render(panel, params, text_name, text_color)
+		fix_text_size(result_text)
+		result_text:set_center(params.x, params.y)
 	end
 
 	return result_text, result_shadow
@@ -101,11 +108,11 @@ local function add_hook()
 			text = string.format("%d :: %d", current_clip, current_left),
 			font = tweak_data.menu.pd2_medium_font,
 			font_size = 16,
-		}, Color.white, Color.black, { x = 1, y = 1 })
+			color = Color.white,
+			x = center_x,
+			y = center_y,
+		}, { x = 1, y = 1 })
 
-		if text then
-			text:set_center(center_x, center_y)
-		end
 		-- shadow:set_center(center_x, center_y)
 
 		-- if low_ammo_clip and not out_of_ammo and not low_ammo then
