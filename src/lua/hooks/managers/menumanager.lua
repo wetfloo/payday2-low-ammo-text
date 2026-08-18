@@ -5,12 +5,12 @@ Hooks:Add(
 		MenuHelper:LoadFromJsonFile(
 			LowAmmoText.mod_path .. "menus/blt_options.json",
 			LowAmmoText,
-			LowAmmoText._menu_data
+			LowAmmoText._data
 		)
 
 		-- Add our own callbacks to handle menu value changes
 		MenuCallbackHandler.low_ammo_text__menu_callback__test_slider = function(_self, item)
-			LowAmmoText._menu_data.test_value = item:value()
+			LowAmmoText._data.test_value = item:value()
 			log(item:value())
 		end
 

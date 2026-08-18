@@ -6,7 +6,7 @@ function LowAmmoText.dohook(name)
 	return dofile(LowAmmoText.mod_path .. "lua/hooks/" .. name .. ".lua")
 end
 
-LowAmmoText._menu_data = {
+LowAmmoText._data = {
 	test_value = 6.7,
 }
 
