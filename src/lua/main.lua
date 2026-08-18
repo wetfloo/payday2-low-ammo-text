@@ -15,6 +15,11 @@ if RequiredScript == "lib/entry" then
 	return
 end
 
+if RequiredScript == "lib/managers/hudmanager" then
+	LowAmmoText.dohook("managers/hudmanager")
+	return
+end
+
 if RequiredScript == "lib/managers/menumanager" then
 	LowAmmoText.dohook("managers/menumanager")
 	return
