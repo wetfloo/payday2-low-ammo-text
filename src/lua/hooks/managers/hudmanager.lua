@@ -94,7 +94,7 @@ local function add_hook()
 		local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_FULLSCREEN_PD2)
 
 		local center_x = hud.panel:w() / 2
-		local center_h = hud.panel:h() / 2
+		local center_y = hud.panel:h() / 2
 
 		local text, shadow = shadowed_text(hud.panel, {
 			name = "low_ammo_text__test_text",
