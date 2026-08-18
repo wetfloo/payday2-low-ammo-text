@@ -14,7 +14,11 @@
 	"hooks": [
 		{
 			"hook_id": "lib/entry",
-			"script_path": "main.lua"
+			"script_path": "lua/main.lua"
+		},
+		{
+			"hook_id": "lib/managers/menumanager",
+			"script_path": "lua/main.lua"
 		}
 	]
 }

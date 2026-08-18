@@ -1,0 +1,17 @@
+_G.LowAmmoText = _G.LowAmmoText or {}
+
+LowAmmoText.mod_path = LowAmmoText.mod_path or ModPath
+
+function LowAmmoText.dohook(name)
+	return dofile(LowAmmoText.mod_path .. "lua/hooks/" .. name .. ".lua")
+end
+
+LowAmmoText._menu_data = {
+	test_value = 6.7,
+}
+
+if RequiredScript == "lib/entry" then
+	LowAmmoText.dohook("entry")
+elseif RequiredScript == "lib/managers/menumanager" then
+	LowAmmoText.dohook("managers/menumanager")
+end
