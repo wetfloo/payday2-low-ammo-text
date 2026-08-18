@@ -1,0 +1,9 @@
+[submodule "PAYDAY 2"]
+	path = vendor/PAYDAY-2
+	url = https://github.com/steam-test1/Payday-2-LuaJIT-Complete.git
+[submodule "SuperBLT"]
+	path = vendor/SuperBLT
+	url = https://github.com/diesel-modding/PAYDAY2-SuperBLT-Lua.git
+[submodule "BeardLib"]
+	path = vendor/BeardLib
+	url = https://github.com/diesel-modding/PAYDAY-2-BeardLib.git

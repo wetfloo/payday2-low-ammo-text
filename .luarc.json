@@ -1,0 +1,19 @@
+{
+	"$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+	"runtime.version": "LuaJIT",
+	"workspace.preloadFileSize": 10000,
+	"workspace.library": [
+		"./vendor/PAYDAY-2",
+		"./vendor/SuperBLT",
+		"./vendor/BeardLib"
+	],
+	"diagnostics.globals": [
+		"DB",
+		"ModPath",
+		"SavePath",
+		"Rotation",
+		"RequiredScript",
+		"World",
+		"log"
+	]
+}

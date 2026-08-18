@@ -1,0 +1,20 @@
+{
+	"name": "TODO::desc",
+	"description": "TODO::desc",
+	"author": "TODO::desc",
+	"contact": "TODO::desc",
+	"version": "1.0",
+	"blt_version": 2,
+	"priority": 10,
+	"color": "0 0 0",
+	"image": "logo.png",
+	"vr_disabled": false,
+	"desktop_disbled": false,
+	"needs_restart": true,
+	"hooks": [
+		{
+			"hook_id": "lib/entry",
+			"script_path": "main.lua"
+		}
+	]
+}
