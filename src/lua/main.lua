@@ -12,6 +12,10 @@ LowAmmoText._menu_data = {
 
 if RequiredScript == "lib/entry" then
 	LowAmmoText.dohook("entry")
-elseif RequiredScript == "lib/managers/menumanager" then
+	return
+end
+
+if RequiredScript == "lib/managers/menumanager" then
 	LowAmmoText.dohook("managers/menumanager")
+	return
 end
