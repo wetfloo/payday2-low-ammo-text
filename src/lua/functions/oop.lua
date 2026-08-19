@@ -23,7 +23,7 @@
 ---@field private _text RenderedTextComponent
 ---@field private _text_configuration TextConfiguration
 ---@field private _shadow RenderedTextComponent
----@field private _text_shadow_configuration TextConfiguration
+---@field private _text_shadow_configuration TextConfiguration|nil
 
 ---@alias Color any
 ---@alias Font any
