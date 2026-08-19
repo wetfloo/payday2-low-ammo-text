@@ -7,8 +7,8 @@ function LowAmmoText.dofile(name)
 end
 
 -- keep-sorted start
-dofile("functions/render")
-dofile("functions/tbl")
+LowAmmoText.dofile("functions/render")
+LowAmmoText.dofile("functions/tbl")
 -- keep-sorted end
 
 LowAmmoText._data = {
