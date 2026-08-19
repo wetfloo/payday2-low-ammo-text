@@ -57,6 +57,7 @@ local function find_or_create(params_common)
 	set_text_panel_size_to_rendered(result_text)
 	result_text:set_center(w, h)
 
+	-- TODO::debug
 	Utils.PrintTable({ x = result_text:center_x(), y = result_text:center_y() })
 
 	return result_text, result_shadow
