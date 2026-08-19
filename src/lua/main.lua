@@ -2,27 +2,38 @@ _G.LowAmmoText = _G.LowAmmoText or {}
 
 LowAmmoText.mod_path = LowAmmoText.mod_path or ModPath
 
-function LowAmmoText.dohook(name)
-	return dofile(LowAmmoText.mod_path .. "lua/hooks/" .. name .. ".lua")
+function LowAmmoText.dofile(name)
+	return dofile(LowAmmoText.mod_path .. "lua/" .. name .. ".lua")
 end
 
+-- keep-sorted start
+dofile("functions/render")
+dofile("functions/tbl")
+-- keep-sorted end
+
 LowAmmoText._data = {
-	offset_y = -20.0,
+	text_color = Color.white,
+	shadow_color = Color.black,
+
+	text_offset = {
+		x = 0,
+		y = -20,
+	},
 }
 
 LowAmmoText._rendered_indicators = {}
 
 if RequiredScript == "lib/entry" then
-	LowAmmoText.dohook("entry")
+	LowAmmoText.dofile("hooks/entry")
 	return
 end
 
 if RequiredScript == "lib/managers/hudmanager" then
-	LowAmmoText.dohook("managers/hudmanager")
+	LowAmmoText.dofile("hooks/managers/hudmanager")
 	return
 end
 
 if RequiredScript == "lib/managers/menumanager" then
-	LowAmmoText.dohook("managers/menumanager")
+	LowAmmoText.dofile("hooks/managers/menumanager")
 	return
 end

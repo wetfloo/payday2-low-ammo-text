@@ -15,7 +15,7 @@
 			"max": 1000.0,
 			"step": 1,
 			"show_value": true,
-			"value": "offset_y"
+			"value": "y"
 		}
 	]
 }
