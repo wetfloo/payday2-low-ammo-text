@@ -76,10 +76,11 @@ function LowAmmoText.RenderedText:_hud_center_with_offset()
 end
 
 function LowAmmoText.RenderedText:realign()
+	local w, h = self:_hud_center_with_offset()
+
 	if self._shadow and alive(self._shadow) then
 		set_text_panel_size_to_rendered(self._shadow)
 
-		local w, h = self:_hud_center_with_offset()
 		self._shadow:set_center(w, h)
 
 		local x, y = table.unpack(self._text_shadow_configuration.additional_offset)
@@ -89,7 +90,6 @@ function LowAmmoText.RenderedText:realign()
 	if self._text and alive(self._text) then
 		set_text_panel_size_to_rendered(self._text)
 
-		local w, h = self:_hud_center_with_offset()
 		self._text:set_center(w, h)
 	end
 end
