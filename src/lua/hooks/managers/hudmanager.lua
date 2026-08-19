@@ -115,6 +115,9 @@ local function add_hook()
 			y = center_y + LowAmmoText._data.offset_y,
 		}, { x = 1, y = 1 })
 
+		LowAmmoText._rendered_indicators.text = text
+		LowAmmoText._rendered_indicators.shadow = shadow
+
 		-- shadow:set_center(center_x, center_y)
 
 		-- if low_ammo_clip and not out_of_ammo and not low_ammo then

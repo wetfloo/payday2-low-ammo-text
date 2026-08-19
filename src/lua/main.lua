@@ -10,6 +10,8 @@ LowAmmoText._data = {
 	offset_y = -20.0,
 }
 
+LowAmmoText._rendered_indicators = {}
+
 if RequiredScript == "lib/entry" then
 	LowAmmoText.dohook("entry")
 	return
