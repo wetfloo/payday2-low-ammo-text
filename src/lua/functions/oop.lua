@@ -11,21 +11,24 @@
 ---@field color Color
 ---@field offset Offset
 ---@field font_size number
----@field font any
+---@field font Font
 
 ---@class (exact) TextShadowConfiguration
 ---@field color Color
 ---@field additional_offset Offset
 
 ---@class RenderedText
----@field private _hud any
----@field private _panel any
+---@field private _hud HUD
+---@field private _panel HUDPanel
 ---@field private _text RenderedTextComponent
 ---@field private _text_configuration TextConfiguration
 ---@field private _shadow RenderedTextComponent
 ---@field private _text_shadow_configuration TextConfiguration
 
 ---@alias Color any
+---@alias Font any
+---@alias HUD any
+---@alias HUDPanel any
 ---@alias RenderedTextComponent any
 
 LowAmmoText.RenderedText = LowAmmoText.RenderedText or class()
