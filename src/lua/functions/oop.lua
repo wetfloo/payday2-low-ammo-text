@@ -54,11 +54,14 @@ function LowAmmoText.RenderedText:init(param)
 		font = param.text_configuration.font,
 		font_size = param.text_configuration.font_size,
 	}
-	local params_shadow = LowAmmoText.tbl.shallow_copy(params_text)
-	params_shadow.color = param.text_shadow_configuration.color
 
-	-- Render shadow first, otherwise we get overlap.
-	self._shadow = self._panel:text(params_shadow)
+	if self._text_shadow_configuration then
+		local params_shadow = LowAmmoText.tbl.shallow_copy(params_text)
+		params_shadow.color = param.text_shadow_configuration.color
+		-- Render shadow first, otherwise we get overlap.
+		self._shadow = self._panel:text(params_shadow)
+	end
+	-- Then we can render text
 	self._text = self._panel:text(params_text)
 
 	self:_realign()
