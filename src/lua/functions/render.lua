@@ -29,7 +29,7 @@ local function find_or_create(name, params_common)
 	h = h + text_offset.y
 
 	if not result_text or not alive(result_text) then
-		local params = LowAmmoText.shallow_copy(params_common)
+		local params = LowAmmoText.tbl.shallow_copy(params_common)
 		params.name = name
 		params.color = Color.white
 
@@ -37,7 +37,7 @@ local function find_or_create(name, params_common)
 	end
 
 	if not result_shadow or not alive(result_shadow) then
-		local params = LowAmmoText.shallow_copy(params_common)
+		local params = LowAmmoText.tbl.shallow_copy(params_common)
 		params.name = name .. "_text_shadow"
 		params.color = Color.black
 
