@@ -7,7 +7,7 @@ function LowAmmoText.dohook(name)
 end
 
 LowAmmoText._data = {
-	test_value = 6.7,
+	offset_y = -20.0,
 }
 
 if RequiredScript == "lib/entry" then

@@ -9,14 +9,11 @@ Hooks:Add(
 		)
 
 		-- Add our own callbacks to handle menu value changes
-		MenuCallbackHandler.low_ammo_text__menu_callback__test_slider = function(_self, item)
-			LowAmmoText._data.test_value = item:value()
-			log(item:value())
+		MenuCallbackHandler.low_ammo_text__menu_callback__indicator_offset_y = function(_self, item)
+			LowAmmoText._data.offset_y = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)
-			log("closed!")
-		end
+		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self) end
 	end
 )
 

@@ -7,15 +7,15 @@
 	"items": [
 		{
 			"type": "slider",
-			"id": "low_ammo_text__menu_component__test_slider",
-			"callback": "low_ammo_text__menu_callback__test_slider",
-			"title": "low_ammo_text__menu_component__test_slider__title",
-			"description": "low_ammo_text__menu_component__test_slider__desc",
-			"min": 1.0,
-			"max": 999.0,
-			"step": 0.1,
+			"id": "low_ammo_text__menu_component__indicator_offset_y",
+			"callback": "low_ammo_text__menu_callback__indicator_offset_y",
+			"title": "low_ammo_text__menu_component__indicator_offset_y__title",
+			"description": "low_ammo_text__menu_component__indicator_offset_y__desc",
+			"min": -1000.0,
+			"max": 1000.0,
+			"step": 1,
 			"show_value": true,
-			"value": "test_value"
+			"value": "offset_y"
 		}
 	]
 }

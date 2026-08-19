@@ -106,13 +106,13 @@ local function add_hook()
 		local center_y = hud.panel:h() / 2
 
 		local text, shadow = shadowed_text(hud.panel, {
-			name = "low_ammo_text__test_text",
+			name = "low_ammo_text__ammo_indicator",
 			text = string.format("%d :: %d", current_clip, current_left),
 			font = tweak_data.menu.pd2_medium_font,
 			font_size = 16,
 			color = Color.white,
 			x = center_x,
-			y = center_y,
+			y = center_y + LowAmmoText._data.offset_y,
 		}, { x = 1, y = 1 })
 
 		-- shadow:set_center(center_x, center_y)
