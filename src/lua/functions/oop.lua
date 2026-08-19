@@ -8,13 +8,13 @@
 ---@field text_shadow_configuration TextShadowConfiguration|nil
 
 ---@class (exact) TextConfiguration
----@field color any
+---@field color Color
 ---@field offset Offset
 ---@field font_size number
 ---@field font any
 
 ---@class (exact) TextShadowConfiguration
----@field color any
+---@field color Color
 ---@field additional_offset Offset
 
 ---@class RenderedText
@@ -25,6 +25,7 @@
 ---@field private _shadow RenderedTextComponent
 ---@field private _text_shadow_configuration TextConfiguration
 
+---@alias Color any
 ---@alias RenderedTextComponent any
 
 LowAmmoText.RenderedText = LowAmmoText.RenderedText or class()
@@ -57,7 +58,19 @@ function LowAmmoText.RenderedText:init(param)
 	self._shadow = self._panel:text(params_shadow)
 	self._text = self._panel:text(params_text)
 
-	self:realign()
+	self:_realign()
+end
+
+---@param offset Offset
+function LowAmmoText.RenderedText:set_offset(offset)
+	self._text_configuration.offset = offset
+	self:_realign()
+end
+
+---@param color Color
+function LowAmmoText.RenderedText:set_text_color(color)
+	self._text_configuration.color = color
+	self._text:set_color(color)
 end
 
 ---@private
@@ -75,7 +88,8 @@ function LowAmmoText.RenderedText:_hud_center_with_offset()
 	return w + x, h + y
 end
 
-function LowAmmoText.RenderedText:realign()
+---@private
+function LowAmmoText.RenderedText:_realign()
 	local w, h = self:_hud_center_with_offset()
 
 	if self._shadow and alive(self._shadow) then
