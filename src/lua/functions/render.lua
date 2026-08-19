@@ -28,20 +28,24 @@ local function find_or_create(name, params_common)
 	w = w + text_offset.x
 	h = h + text_offset.y
 
-	if not result_text or not alive(result_text) then
-		local params = LowAmmoText.tbl.shallow_copy(params_common)
-		params.name = name
-		params.color = Color.white
-
-		result_text = panel:text(params)
-	end
-
 	if not result_shadow or not alive(result_shadow) then
 		local params = LowAmmoText.tbl.shallow_copy(params_common)
 		params.name = name .. "_text_shadow"
 		params.color = Color.black
 
 		result_shadow = panel:text(params)
+	else
+		result_shadow:set_text(params_common.text)
+	end
+
+	if not result_text or not alive(result_text) then
+		local params = LowAmmoText.tbl.shallow_copy(params_common)
+		params.name = name
+		params.color = Color.white
+
+		result_text = panel:text(params)
+	else
+		result_text:set_text(params_common.text)
 	end
 
 	-- Updating text could cause the text size to change,
