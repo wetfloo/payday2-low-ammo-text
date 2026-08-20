@@ -14,7 +14,7 @@ elseif PDTHHud or VoidUI or Holo then
 	delayed = true
 end
 
-local function add_hook()
+local function init_hooks()
 	Hooks:PostHook(hook_class, hook_fn, "LowAmmoText_set_teammate_ammo_amount", function(_self)
 		if not managers.player:player_unit() then
 			return
@@ -58,7 +58,7 @@ local function add_hook()
 end
 
 if delayed then
-	DelayedCalls:Add("LowAmmoText_hudmanager_delayed", 2, add_hook)
+	DelayedCalls:Add("LowAmmoText_hudmanager_delayed", 2, init_hooks)
 else
-	add_hook()
+	init_hooks()
 end
