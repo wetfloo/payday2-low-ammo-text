@@ -7,8 +7,11 @@ function LowAmmoText.dofile(name)
 end
 
 -- keep-sorted start
-LowAmmoText.dofile("functions/oop")
 LowAmmoText.dofile("functions/tbl")
+-- keep-sorted end
+
+-- keep-sorted start
+LowAmmoText.dofile("classes/rendered_text")
 -- keep-sorted end
 
 LowAmmoText._data = {
