@@ -25,7 +25,7 @@ LowAmmoText._data = {
 }
 
 if RequiredScript == "lib/entry" then
-	LowAmmoText.dofile("hooks/entry")
+	LowAmmoText.dofile("hooks/lib/entry")
 	return
 end
 
