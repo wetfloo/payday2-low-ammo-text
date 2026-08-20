@@ -1,6 +1,10 @@
 {
-	"low_ammo_text__blt_options__title" : "Low Ammo Text",
-	"low_ammo_text__blt_options__desc" : "Text that appears when your ammo is low",
-	"low_ammo_text__menu_component__indicator_offset_y__title": "Indicator vertical offset",
-	"low_ammo_text__menu_component__indicator_offset_y__desc": "Indicator vertical (y) offset, relative to center"
+	"low_ammo_text__blt_options__title": "Low Ammo Text",
+	"low_ammo_text__blt_options__desc": "Text that appears when your ammo is low",
+	"low_ammo_text__menu_component__text_font_size__title": "Font size",
+	"low_ammo_text__menu_component__text_font_size__desc": "Scales the font",
+	"low_ammo_text__menu_component__text_offset_x__title": "Indicator horizontal offset",
+	"low_ammo_text__menu_component__text_offset_x__desc": "Indicator horizontal (X) offset, relative to center",
+	"low_ammo_text__menu_component__text_offset_y__title": "Indicator vertical offset",
+	"low_ammo_text__menu_component__text_offset_y__desc": "Indicator vertical (Y) offset, relative to center"
 }
