@@ -34,13 +34,17 @@ local function init_hooks()
 				return
 			end
 
+			local max_clip = equipped_unit:base():get_ammo_max_per_clip()
 			local current_left = equipped_unit:base():get_ammo_total()
 			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
-			local s = string.format("%s :: %s", current_clip, current_left)
+
+			local low_ammo_clip = current_clip <= math.round(max_clip / 4)
+			local low_ammo = current_left <= math.round(max_clip / 2)
+			local no_ammo = current_left <= 0
 
 			if not LowAmmoText.rendered_text then
 				LowAmmoText.rendered_text = LowAmmoText.RenderedText:new({
-					s = s,
+					s = "",
 					text_configuration = {
 						color = Color.white,
 						offset = LowAmmoText._data.text_offset,
@@ -55,8 +59,22 @@ local function init_hooks()
 						},
 					},
 				})
+			end
+
+			if no_ammo then
+				LowAmmoText.rendered_text:show()
+				LowAmmoText.rendered_text:set_s("NO AMMO")
+				LowAmmoText.rendered_text:set_text_color(Color(255, 0, 0))
+			elseif low_ammo_clip then
+				LowAmmoText.rendered_text:show()
+				LowAmmoText.rendered_text:set_s("RELOAD")
+				LowAmmoText.rendered_text:set_text_color(Color(255, 100, 0))
+			elseif low_ammo then
+				LowAmmoText.rendered_text:show()
+				LowAmmoText.rendered_text:set_s("LOW AMMO")
+				LowAmmoText.rendered_text:set_text_color(Color(255, 255, 128))
 			else
-				LowAmmoText.rendered_text:set_s(s)
+				LowAmmoText.rendered_text:hide()
 			end
 		end
 	)
