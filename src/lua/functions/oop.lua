@@ -20,6 +20,7 @@
 ---@class RenderedText
 ---@field private _hud HUD
 ---@field private _panel HUDPanel
+---@field private _s string
 ---@field private _text RenderedTextComponent
 ---@field private _text_configuration TextConfiguration
 ---@field private _shadow RenderedTextComponent
@@ -79,6 +80,16 @@ function LowAmmoText.RenderedText:set_text_color(color)
 	self._text:set_color(color)
 end
 
+---@param s string
+function LowAmmoText.RenderedText:set_s(s)
+	self._s = s
+
+	self._text:set_text(s)
+	self._shadow:set_text(s)
+
+	self:_realign()
+end
+
 ---@private
 function LowAmmoText.RenderedText:_hud_center()
 	local w = self._hud.panel:w() / 2
@@ -89,7 +100,8 @@ end
 ---@private
 function LowAmmoText.RenderedText:_hud_center_with_offset()
 	local w, h = self:_hud_center()
-	local x, y = table.unpack(self._text_configuration.offset)
+	local x = self._text_configuration.offset.x
+	local y = self._text_configuration.offset.y
 
 	return w + x, h + y
 end
@@ -103,7 +115,8 @@ function LowAmmoText.RenderedText:_realign()
 
 		self._shadow:set_center(w, h)
 
-		local x, y = table.unpack(self._text_shadow_configuration.additional_offset)
+		local x = self._text_shadow_configuration.additional_offset.x
+		local y = self._text_shadow_configuration.additional_offset.y
 		self._shadow:move(x, y)
 	end
 
