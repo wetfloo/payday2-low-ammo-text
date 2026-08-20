@@ -9,6 +9,29 @@ Hooks:Add(
 		)
 
 		-- Add our own callbacks to handle menu value changes
+		MenuCallbackHandler.low_ammo_text__menu_callback__indicator_font_size = function(
+			_self,
+			item
+		)
+			local val = item:value()
+
+			LowAmmoText._data.text_font_size = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_font_size(val)
+			end
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__indicator_offset_x = function(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_offset_x = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_offset_x(val)
+			end
+		end
+
 		MenuCallbackHandler.low_ammo_text__menu_callback__indicator_offset_y = function(_self, item)
 			local val = item:value()
 

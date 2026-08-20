@@ -19,10 +19,13 @@ LowAmmoText.dofile("functions/tbl")
 LowAmmoText.dofile("classes/rendered_text")
 -- keep-sorted end
 
-LowAmmoText._data = {
-	text_offset_x = 0,
-	text_offset_y = 20,
-}
+LowAmmoText._data = LowAmmoText._data
+	or {
+		text_font_size = 14,
+
+		text_offset_x = 0,
+		text_offset_y = 20,
+	}
 
 if RequiredScript == "lib/entry" then
 	LowAmmoText.dofile("hooks/lib/entry")
