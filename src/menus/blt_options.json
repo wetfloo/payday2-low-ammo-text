@@ -13,7 +13,7 @@
 			"description": "low_ammo_text__menu_component__indicator_font_size__desc",
 			"min": 1.0,
 			"max": 48.0,
-			"step": 1,
+			"step": 0.5,
 			"show_value": true,
 			"value": "text_font_size"
 		},
