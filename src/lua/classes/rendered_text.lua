@@ -26,10 +26,6 @@
 ---@field private _shadow RenderedTextComponent
 ---@field private _text_shadow_configuration TextConfiguration|nil
 
----@alias Color any
----@alias Font any
----@alias HUD any
----@alias HUDPanel any
 ---@alias RenderedTextComponent any
 
 LowAmmoText.RenderedText = LowAmmoText.RenderedText or class()

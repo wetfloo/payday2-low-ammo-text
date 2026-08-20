@@ -1,3 +1,8 @@
+---@alias Color any
+---@alias Font any
+---@alias HUD any
+---@alias HUDPanel any
+
 _G.LowAmmoText = _G.LowAmmoText or {}
 
 LowAmmoText.mod_path = LowAmmoText.mod_path or ModPath
