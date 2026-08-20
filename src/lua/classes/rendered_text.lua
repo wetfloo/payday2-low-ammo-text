@@ -68,6 +68,17 @@ function LowAmmoText.RenderedText:init(param)
 	self:_realign()
 end
 
+function LowAmmoText.RenderedText:destroy()
+	if self._text and alive(self._text) then
+		self._text:remove()
+		self._text = nil
+	end
+	if self._shadow and alive(self._shadow) then
+		self._shadow:remove()
+		self._shadow = nil
+	end
+end
+
 ---@param offset Offset
 function LowAmmoText.RenderedText:set_offset(offset)
 	self._text_configuration.offset = offset
