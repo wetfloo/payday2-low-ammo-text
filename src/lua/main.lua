@@ -20,7 +20,7 @@ LowAmmoText._data = {
 
 	text_offset = {
 		x = 0,
-		y = -20,
+		y = 20,
 	},
 }
 
