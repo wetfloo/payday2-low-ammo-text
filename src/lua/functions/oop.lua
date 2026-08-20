@@ -82,6 +82,10 @@ end
 
 ---@param s string
 function LowAmmoText.RenderedText:set_s(s)
+	if s == self._s then
+		return
+	end
+
 	self._s = s
 
 	self._text:set_text(s)
