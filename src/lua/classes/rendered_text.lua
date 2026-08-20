@@ -74,6 +74,18 @@ function LowAmmoText.RenderedText:set_offset(offset)
 	self:_realign()
 end
 
+---@param val number
+function LowAmmoText.RenderedText:set_offset_x(val)
+	self._text_configuration.offset.x = val
+	self:_realign()
+end
+
+---@param val number
+function LowAmmoText.RenderedText:set_offset_y(val)
+	self._text_configuration.offset.y = val
+	self:_realign()
+end
+
 ---@param color Color
 function LowAmmoText.RenderedText:set_text_color(color)
 	self._text_configuration.color = color

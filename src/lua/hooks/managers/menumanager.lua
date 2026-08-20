@@ -12,9 +12,13 @@ Hooks:Add(
 
 		-- Add our own callbacks to handle menu value changes
 		MenuCallbackHandler.low_ammo_text__menu_callback__indicator_offset_y = function(_self, item)
-			LowAmmoText._data.text_offset.y = item:value()
+			local val = item:value()
 
-			LowAmmoText.render.update_text()
+			LowAmmoText._data.text_offset.y = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_offset_y(val)
+			end
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self) end

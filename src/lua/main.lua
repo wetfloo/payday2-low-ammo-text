@@ -24,8 +24,6 @@ LowAmmoText._data = {
 	},
 }
 
-LowAmmoText._rendered_indicators = {}
-
 if RequiredScript == "lib/entry" then
 	LowAmmoText.dofile("hooks/entry")
 	return
