@@ -162,19 +162,12 @@ end
 function LowAmmoText.RenderedText:_realign()
 	local w, h = self:_hud_center_with_offset()
 
-	if self._shadow and alive(self._shadow) then
-		set_text_panel_size_to_rendered(self._shadow)
+	set_text_panel_size_to_rendered(self._shadow)
+	self._shadow:set_center(w, h)
+	local x = self._text_shadow_configuration.additional_offset.x
+	local y = self._text_shadow_configuration.additional_offset.y
+	self._shadow:move(x, y)
 
-		self._shadow:set_center(w, h)
-
-		local x = self._text_shadow_configuration.additional_offset.x
-		local y = self._text_shadow_configuration.additional_offset.y
-		self._shadow:move(x, y)
-	end
-
-	if self._text and alive(self._text) then
-		set_text_panel_size_to_rendered(self._text)
-
-		self._text:set_center(w, h)
-	end
+	set_text_panel_size_to_rendered(self._text)
+	self._text:set_center(w, h)
 end
