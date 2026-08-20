@@ -117,6 +117,16 @@ function LowAmmoText.RenderedText:set_s(s)
 	self:_realign()
 end
 
+function LowAmmoText.RenderedText:show()
+	self._text:show()
+	self._shadow:show()
+end
+
+function LowAmmoText.RenderedText:hide()
+	self._text:hide()
+	self._shadow:hide()
+end
+
 ---@private
 function LowAmmoText.RenderedText:_hud_center()
 	local w = self._hud.panel:w() / 2
