@@ -123,13 +123,13 @@ function LowAmmoText.RenderedText:set_alpha(val)
 end
 
 function LowAmmoText.RenderedText:show()
-	self._text:show()
 	self._shadow:show()
+	self._text:show()
 end
 
 function LowAmmoText.RenderedText:hide()
-	self._text:hide()
 	self._shadow:hide()
+	self._text:hide()
 end
 
 ---@param val number
