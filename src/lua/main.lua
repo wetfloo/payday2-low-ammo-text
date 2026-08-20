@@ -25,6 +25,8 @@ LowAmmoText._data = LowAmmoText._data
 
 		text_offset_x = 0,
 		text_offset_y = 20,
+
+		text_alpha = 1.0,
 	}
 
 if RequiredScript == "lib/entry" then

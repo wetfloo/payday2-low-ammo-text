@@ -39,6 +39,16 @@ Hooks:Add(
 			end
 		end
 
+		MenuCallbackHandler.low_ammo_text__menu_callback__text_alpha = function(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_alpha = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_alpha(val)
+			end
+		end
+
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self) end
 	end
 )

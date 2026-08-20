@@ -9,6 +9,7 @@
 
 ---@class (exact) TextConfiguration
 ---@field color Color
+---@field alpha number
 ---@field offset Offset
 ---@field font_size number
 ---@field font Font
@@ -111,6 +112,14 @@ function LowAmmoText.RenderedText:set_s(s)
 	self._shadow:set_text(s)
 
 	self:_realign()
+end
+
+---@param val number
+function LowAmmoText.RenderedText:set_alpha(val)
+	self._text:set_alpha(val)
+	self._shadow:set_alpha(val)
+
+	self._alpha = val
 end
 
 function LowAmmoText.RenderedText:show()
