@@ -20,13 +20,8 @@ LowAmmoText.dofile("classes/rendered_text")
 -- keep-sorted end
 
 LowAmmoText._data = {
-	text_color = Color.white,
-	shadow_color = Color.black,
-
-	text_offset = {
-		x = 0,
-		y = 20,
-	},
+	text_offset_x = 0,
+	text_offset_y = 20,
 }
 
 if RequiredScript == "lib/entry" then

@@ -47,7 +47,10 @@ local function init_hooks()
 					s = "",
 					text_configuration = {
 						color = Color.white,
-						offset = LowAmmoText._data.text_offset,
+						offset = {
+							x = LowAmmoText._data.text_offset_x,
+							y = LowAmmoText._data.text_offset_y,
+						},
 						font_size = 16,
 						font = tweak_data.menu.pd2_medium_font,
 					},
