@@ -30,6 +30,20 @@
 			"value": "text_font_size"
 		},
 		{
+			"type": "multiple_choice",
+			"id": "low_ammo_text__menu_component__text_font_preset",
+			"callback": "low_ammo_text__menu_callback__text_font_preset",
+			"title": "low_ammo_text__menu_component__text_font_preset__title",
+			"description": "low_ammo_text__menu_component__text_font_preset__desc",
+			"items": [
+				"low_ammo_text__item__text_font_preset__small",
+				"low_ammo_text__item__text_font_preset__medium",
+				"low_ammo_text__item__text_font_preset__large"
+			],
+			"localized_items": true,
+			"value": "text_font_preset"
+		},
+		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__text_offset_x",
 			"callback": "low_ammo_text__menu_callback__text_offset_x",

@@ -142,6 +142,17 @@ function LowAmmoText.RenderedText:set_font_size(val)
 	self:_realign()
 end
 
+function LowAmmoText.RenderedText:set_font(val)
+	self._text_configuration.font = val
+
+	self._text:set_font(val)
+	self._shadow:set_font(val)
+
+	-- TODO: this call would cause access violations, for some reason.
+	-- Find some help and try to fix it.
+	-- self:_realign()
+end
+
 ---@private
 function LowAmmoText.RenderedText:_hud_center()
 	local w = self._hud.panel:w() / 2

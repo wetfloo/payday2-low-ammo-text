@@ -20,16 +20,33 @@ LowAmmoText.dofile("functions/tbl")
 LowAmmoText.dofile("classes/rendered_text")
 -- keep-sorted end
 
+if not LowAmmoText.font_presets then
+	LowAmmoText.font_presets = {}
+
+	local font_presets = {
+		tweak_data.menu.pd2_small_font,
+		tweak_data.menu.pd2_medium_font,
+		tweak_data.menu.pd2_large_font,
+	}
+
+	for i, v in ipairs(font_presets) do
+		-- Bidirectional mapping to easily work with
+		-- SuperBLT menus and JSON ser/de ops.
+		LowAmmoText.font_presets[v] = i
+		LowAmmoText.font_presets[i] = v
+	end
+end
+
 LowAmmoText._data = LowAmmoText._data
 	or {
 		text_font_size = 14,
+		text_font_preset = LowAmmoText.font_presets[tweak_data.menu.pd2_medium_font],
 
 		text_offset_x = 0,
 		text_offset_y = 20,
 
 		text_alpha = 1.0,
 	}
-
 --- Loads the mod's configuration,
 --- saving it to [LowAmmoText._data] and returning it as a table.
 function LowAmmoText:load_configuration()

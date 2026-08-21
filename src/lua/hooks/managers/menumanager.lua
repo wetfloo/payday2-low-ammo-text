@@ -21,6 +21,16 @@ Hooks:Add(
 			end
 		end
 
+		MenuCallbackHandler.low_ammo_text__menu_callback__text_font_preset = function(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_font_preset = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_font(LowAmmoText.font_presets[val])
+			end
+		end
+
 		MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_x = function(_self, item)
 			local val = item:value()
 

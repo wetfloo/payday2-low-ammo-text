@@ -54,7 +54,7 @@ local function init_hooks()
 							y = LowAmmoText._data.text_offset_y,
 						},
 						font_size = LowAmmoText._data.text_font_size,
-						font = tweak_data.menu.pd2_medium_font,
+						font = LowAmmoText.font_presets[LowAmmoText._data.text_font_preset],
 					},
 					text_shadow_configuration = {
 						color = Color.black,
