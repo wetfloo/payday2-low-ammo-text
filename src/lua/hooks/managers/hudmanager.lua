@@ -34,6 +34,8 @@ local function init_hooks()
 				return
 			end
 
+			LowAmmoText:load_configuration()
+
 			local max_clip = equipped_unit:base():get_ammo_max_per_clip()
 			local current_left = equipped_unit:base():get_ammo_total()
 			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()

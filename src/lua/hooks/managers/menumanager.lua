@@ -2,6 +2,8 @@ Hooks:Add(
 	"MenuManagerSetupCustomMenus",
 	"MenuManagerSetupCustomMenus_LowAmmoText",
 	function(_menu_manager, _nodes)
+		LowAmmoText:load_configuration()
+
 		MenuHelper:LoadFromJsonFile(
 			LowAmmoText.mod_path .. "menus/blt_options.json",
 			LowAmmoText,
@@ -49,6 +51,8 @@ Hooks:Add(
 			end
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self) end
+		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)
+			LowAmmoText:save_configuration()
+		end
 	end
 )
