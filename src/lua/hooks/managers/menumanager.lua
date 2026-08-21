@@ -52,15 +52,3 @@ Hooks:Add(
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self) end
 	end
 )
-
-Hooks:Add(
-	"MenuManagerPopulateCustomMenus",
-	"MenuManagerPopulateCustomMenus_LowAmmoText",
-	function(_menu_manager, _nodes) end
-)
-
-Hooks:Add(
-	"MenuManagerBuildCustomMenus",
-	"MenuManagerBuildCustomMenus_LowAmmoText",
-	function(_menu_manager, _nodes) end
-)
