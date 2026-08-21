@@ -70,14 +70,14 @@ local function init_hooks()
 				LowAmmoText.rendered_text:show()
 				LowAmmoText.rendered_text:set_s("NO AMMO")
 				LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.0, 0.0))
-			elseif low_ammo_clip then
-				LowAmmoText.rendered_text:show()
-				LowAmmoText.rendered_text:set_s("RELOAD")
-				LowAmmoText.rendered_text:set_text_color(Color(0.9, 0.9, 0.9))
 			elseif low_ammo then
 				LowAmmoText.rendered_text:show()
 				LowAmmoText.rendered_text:set_s("LOW AMMO")
 				LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.5, 0.0))
+			elseif low_ammo_clip then
+				LowAmmoText.rendered_text:show()
+				LowAmmoText.rendered_text:set_s("RELOAD")
+				LowAmmoText.rendered_text:set_text_color(Color(0.9, 0.9, 0.9))
 			else
 				LowAmmoText.rendered_text:hide()
 			end
