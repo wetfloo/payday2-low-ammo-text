@@ -1,6 +1,6 @@
 LowAmmoText.tbl = LowAmmoText.tbl or {}
 
-LowAmmoText.tbl.shallow_copy = function(tbl)
+function LowAmmoText.tbl.shallow_copy(tbl)
 	local result = {}
 
 	for k, v in pairs(tbl) do
