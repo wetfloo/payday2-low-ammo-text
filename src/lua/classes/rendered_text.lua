@@ -62,6 +62,7 @@ function LowAmmoText.RenderedText:init(param)
 	-- Then we can render text
 	self._text = self._panel:text(params_text)
 
+	self:set_alpha(self._text_configuration.alpha)
 	self:_realign()
 end
 
