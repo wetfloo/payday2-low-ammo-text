@@ -2,6 +2,8 @@ Hooks:Add(
 	"MenuManagerSetupCustomMenus",
 	"MenuManagerSetupCustomMenus_LowAmmoText",
 	function(_menu_manager, _nodes)
+		LowAmmoText:load_configuration()
+
 		MenuHelper:LoadFromJsonFile(
 			LowAmmoText.mod_path .. "menus/blt_options.json",
 			LowAmmoText,
@@ -9,40 +11,48 @@ Hooks:Add(
 		)
 
 		-- Add our own callbacks to handle menu value changes
-		MenuCallbackHandler.low_ammo_text__menu_callback__indicator_offset_y = function(_self, item)
-			local value = item:value()
-			local hud = managers.hud:script(PlayerBase.PLAYER_INFO_HUD_FULLSCREEN_PD2)
+		MenuCallbackHandler.low_ammo_text__menu_callback__text_font_size = function(_self, item)
+			local val = item:value()
 
-			LowAmmoText._data.offset_y = value
+			LowAmmoText._data.text_font_size = val
 
-			local text = LowAmmoText._rendered_indicators.text
-			local shadow = LowAmmoText._rendered_indicators.shadow
-
-			local text_x, text_y = text:center()
-			local shadow_x, shadow_y = shadow:center()
-			local shadow_offset_x = shadow_x - text_x
-			local shadow_offset_y = shadow_y - text_y
-
-			text_y = (hud.panel:w() / 2) + value
-			shadow_x = shadow_x + shadow_offset_x
-			shadow_y = text_y + shadow_offset_y
-
-			text:set_center(text_x, text_y)
-			shadow:set_center(shadow_x, shadow_y)
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_font_size(val)
+			end
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self) end
+		MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_x = function(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_offset_x = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_offset_x(val)
+			end
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_y = function(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_offset_y = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_offset_y(val)
+			end
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__text_alpha = function(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_alpha = val
+
+			if LowAmmoText.rendered_text then
+				LowAmmoText.rendered_text:set_alpha(val)
+			end
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)
+			LowAmmoText:save_configuration()
+		end
 	end
-)
-
-Hooks:Add(
-	"MenuManagerPopulateCustomMenus",
-	"MenuManagerPopulateCustomMenus_LowAmmoText",
-	function(_menu_manager, _nodes) end
-)
-
-Hooks:Add(
-	"MenuManagerBuildCustomMenus",
-	"MenuManagerBuildCustomMenus_LowAmmoText",
-	function(_menu_manager, _nodes) end
 )
