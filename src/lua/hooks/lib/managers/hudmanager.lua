@@ -36,10 +36,6 @@ local function init_hooks()
 
 			LowAmmoText:load_configuration()
 
-			local max_clip = equipped_unit:base():get_ammo_max_per_clip()
-			local current_left = equipped_unit:base():get_ammo_total()
-			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
-
 			if not LowAmmoText.ammo_state_manager then
 				local rendered_text = LowAmmoText.RenderedText:new({
 					s = "",
@@ -65,7 +61,10 @@ local function init_hooks()
 				LowAmmoText.ammo_state_manager = LowAmmoText.AmmoStateManager:new(rendered_text)
 			end
 
-			LowAmmoText.ammo_state_manager:set_state_values({
+			local max_clip = equipped_unit:base():get_ammo_max_per_clip()
+			local current_left = equipped_unit:base():get_ammo_total()
+			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
+			LowAmmoText.ammo_state_manager:update_state_values({
 				no_ammo = current_left <= 0,
 				low_total_ammo = current_left
 					<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip,
