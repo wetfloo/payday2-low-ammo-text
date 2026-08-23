@@ -14,6 +14,38 @@ elseif PDTHHud or VoidUI or Holo then
 	delayed = true
 end
 
+---@return LowAmmoText.AmmoStateManager
+local function get_or_init_ammo_state_manager()
+	if LowAmmoText.ammo_state_manager then
+		return LowAmmoText.ammo_state_manager
+	end
+
+	local rendered_text = LowAmmoText.RenderedText:new({
+		s = "",
+		text_configuration = {
+			color = Color.white,
+			offset = {
+				x = LowAmmoText._data.text_offset_x,
+				y = LowAmmoText._data.text_offset_y,
+			},
+			font_size = LowAmmoText._data.text_font_size,
+			font = tweak_data.menu.pd2_large_font,
+			alpha = LowAmmoText._data.text_alpha,
+		},
+		text_shadow_configuration = {
+			color = Color.black,
+			additional_offset = {
+				x = 1,
+				y = 1,
+			},
+		},
+	})
+	local ammo_state_manager = LowAmmoText.AmmoStateManager:new(rendered_text)
+
+	LowAmmoText.ammo_state_manager = ammo_state_manager
+	return ammo_state_manager
+end
+
 local function init_hooks()
 	Hooks:PostHook(
 		hook_class,
@@ -36,35 +68,12 @@ local function init_hooks()
 
 			LowAmmoText:load_configuration()
 
-			if not LowAmmoText.ammo_state_manager then
-				local rendered_text = LowAmmoText.RenderedText:new({
-					s = "",
-					text_configuration = {
-						color = Color.white,
-						offset = {
-							x = LowAmmoText._data.text_offset_x,
-							y = LowAmmoText._data.text_offset_y,
-						},
-						font_size = LowAmmoText._data.text_font_size,
-						font = tweak_data.menu.pd2_large_font,
-						alpha = LowAmmoText._data.text_alpha,
-					},
-					text_shadow_configuration = {
-						color = Color.black,
-						additional_offset = {
-							x = 1,
-							y = 1,
-						},
-					},
-				})
-
-				LowAmmoText.ammo_state_manager = LowAmmoText.AmmoStateManager:new(rendered_text)
-			end
+			local ammo_state_manager = get_or_init_ammo_state_manager()
 
 			local max_clip = equipped_unit:base():get_ammo_max_per_clip()
 			local current_left = equipped_unit:base():get_ammo_total()
 			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
-			LowAmmoText.ammo_state_manager:update_state_values({
+			ammo_state_manager:update_state_values({
 				no_ammo = current_left <= 0,
 				low_total_ammo = current_left
 					<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip,
