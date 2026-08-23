@@ -3,7 +3,7 @@
 ---@field low_total_ammo? boolean
 ---@field clip_empty? boolean
 ---@field bulletstorm? boolean
----@field low_clip_ammo? boolean
+---@field low_ammo_clip? boolean
 
 ---@class (exact) LowAmmoText.AmmoStateManager
 ---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
