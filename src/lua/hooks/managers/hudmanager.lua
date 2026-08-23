@@ -40,8 +40,10 @@ local function init_hooks()
 			local current_left = equipped_unit:base():get_ammo_total()
 			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
 
-			local low_ammo_clip = current_clip <= math.round(max_clip / 4)
-			local low_ammo = current_left <= math.round(max_clip / 2)
+			local low_ammo_clip = current_clip
+				<= max_clip * LowAmmoText._data.threshold_low_ammo_clip
+			local low_ammo = current_left
+				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip
 			local no_ammo = current_left <= 0
 
 			if not LowAmmoText.rendered_text then
@@ -67,20 +69,21 @@ local function init_hooks()
 				})
 			end
 
-			if no_ammo then
-				LowAmmoText.rendered_text:show()
-				LowAmmoText.rendered_text:set_s("NO AMMO")
-				LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.0, 0.0))
-			elseif low_ammo then
-				LowAmmoText.rendered_text:show()
-				LowAmmoText.rendered_text:set_s("LOW AMMO")
-				LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.5, 0.0))
-			elseif low_ammo_clip then
-				LowAmmoText.rendered_text:show()
-				LowAmmoText.rendered_text:set_s("RELOAD")
-				LowAmmoText.rendered_text:set_text_color(Color(0.9, 0.9, 0.9))
+			if no_ammo or low_ammo or low_ammo_clip then
+				LowAmmoText.rendered_text:show(LowAmmoText._data.text_fade_duration_secs)
+
+				if no_ammo then
+					LowAmmoText.rendered_text:set_s(managers.localization:text("low_ammo_text__ammo_state__no_ammo"))
+					LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.0, 0.0))
+				elseif low_ammo then
+					LowAmmoText.rendered_text:set_s(managers.localization:text("low_ammo_text__ammo_state__low_total"))
+					LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.5, 0.0))
+				elseif low_ammo_clip then
+					LowAmmoText.rendered_text:set_s(managers.localization:text("low_ammo_text__ammo_state__low_clip"))
+					LowAmmoText.rendered_text:set_text_color(Color(0.9, 0.9, 0.9))
+				end
 			else
-				LowAmmoText.rendered_text:hide()
+				LowAmmoText.rendered_text:hide(LowAmmoText._data.text_fade_duration_secs)
 			end
 		end
 	)

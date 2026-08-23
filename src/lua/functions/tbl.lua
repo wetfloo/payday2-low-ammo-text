@@ -15,12 +15,12 @@ end
 ---@return table
 local function fill_missing_rec(target, filler)
 	for k, v in pairs(filler) do
-		if not target[k] then
+		if target[k] == nil then
 			-- No need to worry about inner table structure,
 			-- as `filler` should have the entire table
 			-- structure for `target`'s missing fields.
 			-- If it doesn't, too bad.
-			target[k] = filler
+			target[k] = v
 		elseif type(target[k]) == "table" and type(v) == "table" then
 			fill_missing_rec(target[k], v)
 		end

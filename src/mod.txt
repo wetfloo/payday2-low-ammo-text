@@ -1,12 +1,12 @@
 {
-	"name": "TODO::desc",
-	"description": "TODO::desc",
-	"author": "TODO::desc",
-	"contact": "TODO::desc",
+	"name": "Low Ammo Text",
+	"description": "Shows a text popup when your ammo is low",
+	"author": "inertia",
+	"contact": "frozenyonder@gmail.com",
 	"version": "1.0",
 	"blt_version": 2,
 	"priority": 10,
-	"color": "0 0 0",
+	"color": "255 150 69",
 	"image": "logo.png",
 	"vr_disabled": false,
 	"desktop_disbled": false,
@@ -23,6 +23,14 @@
 		{
 			"hook_id": "lib/managers/menumanager",
 			"script_path": "lua/main.lua"
+		}
+	],
+	"updates": [
+		{
+			"identifier": "inertia__low_ammo_text__github_release",
+			"meta": "https://github.com/wetfloo/payday2-low-ammo-text/tree/release-latest/src/meta.json",
+			"download": "https://github.com/wetfloo/payday2-low-ammo-text/releases/latest/download/Low Ammo Text.zip",
+			"patchnotes": "https://github.com/wetfloo/payday2-low-ammo-text/releases/latest/download/CHANGELOG.md"
 		}
 	]
 }

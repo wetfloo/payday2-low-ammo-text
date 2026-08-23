@@ -13,6 +13,7 @@ function LowAmmoText.dofile(name)
 end
 
 -- keep-sorted start
+LowAmmoText.dofile("functions/color")
 LowAmmoText.dofile("functions/tbl")
 -- keep-sorted end
 
@@ -23,12 +24,44 @@ LowAmmoText.dofile("classes/rendered_text")
 LowAmmoText._data = LowAmmoText._data
 	or {
 		text_font_size = 14,
-
+		text_alpha = 1.0,
+		text_fade_duration_secs = 0.25,
 		text_offset_x = 0,
 		text_offset_y = 20,
 
-		text_alpha = 1.0,
+		threshold_low_ammo_clip = 0.25,
+		threshold_low_ammo_total_from_clip = 0.5,
 	}
+
+LowAmmoText._mt_data = LowAmmoText._mt_data
+	or {
+		__index = function(t, k)
+			local m = {}
+
+			local function percent(val)
+				return val * 100
+			end
+
+			function m.threshold_low_ammo_clip_percent()
+				return percent(rawget(t, "threshold_low_ammo_clip"))
+			end
+
+			function m.threshold_low_ammo_total_from_clip_percent()
+				return percent(rawget(t, "threshold_low_ammo_total_from_clip"))
+			end
+
+			function m.text_fade_duration_millis()
+				return rawget(t, "text_fade_duration_secs") * 1000
+			end
+
+			local result = m[k]
+			if result and type(result) == "function" then
+				return result()
+			end
+		end,
+	}
+
+setmetatable(LowAmmoText._data, LowAmmoText._mt_data)
 
 --- Loads the mod's configuration,
 --- saving it to [LowAmmoText._data] and returning it as a table.
@@ -38,10 +71,11 @@ function LowAmmoText:load_configuration()
 		return
 	end
 
-	local result = json.decode(file:read("*all"))
+	local result = json.decode(file:read("*all")) or {}
 	file:close()
 
 	self.tbl.fill_missing(result, self._data)
+	setmetatable(result, LowAmmoText._mt_data)
 	self._data = result
 
 	return result

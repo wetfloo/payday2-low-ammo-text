@@ -26,6 +26,7 @@
 ---@field private _text_configuration TextConfiguration
 ---@field private _shadow RenderedTextComponent
 ---@field private _text_shadow_configuration TextConfiguration|nil
+---@field private _visible boolean
 
 ---@alias RenderedTextComponent any
 
@@ -117,20 +118,60 @@ end
 
 ---@param val number
 function LowAmmoText.RenderedText:set_alpha(val)
+	if not self._visible then
+		return
+	end
+
 	self._text:set_alpha(val)
 	self._shadow:set_alpha(val)
 
-	self._alpha = val
+	self._text_configuration.alpha = val
 end
 
-function LowAmmoText.RenderedText:show()
-	self._shadow:show()
-	self._text:show()
+function LowAmmoText.RenderedText:show(fade_in_duration_secs)
+	if self._visible then
+		return
+	end
+	self._visible = true
+
+	-- Necessary for all the closure we're running next,
+	-- otherwise `self` would be overridden.
+	local t = self
+
+	t._shadow:animate(function(o)
+		over(fade_in_duration_secs or 0.0, function(p)
+			o:set_alpha(p * t._text_configuration.alpha)
+		end)
+	end)
+
+	t._text:animate(function(o)
+		over(fade_in_duration_secs or 0.0, function(p)
+			o:set_alpha(p * t._text_configuration.alpha)
+		end)
+	end)
 end
 
-function LowAmmoText.RenderedText:hide()
-	self._shadow:hide()
-	self._text:hide()
+function LowAmmoText.RenderedText:hide(fade_out_duration_secs)
+	if not self._visible then
+		return
+	end
+	self._visible = false
+
+	-- Necessary for all the closure we're running next,
+	-- otherwise `self` would be overridden.
+	local t = self
+
+	t._shadow:animate(function(o)
+		over(fade_out_duration_secs or 0.0, function(p)
+			o:set_alpha((1 - p) * t._text_configuration.alpha)
+		end)
+	end)
+
+	t._text:animate(function(o)
+		over(fade_out_duration_secs or 0.0, function(p)
+			o:set_alpha((1 - p) * t._text_configuration.alpha)
+		end)
+	end)
 end
 
 ---@param val number

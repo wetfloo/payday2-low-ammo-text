@@ -1,4 +1,7 @@
 {
+	"low_ammo_text__ammo_state__no_ammo": "NO AMMO",
+	"low_ammo_text__ammo_state__low_total": "LOW AMMO",
+	"low_ammo_text__ammo_state__low_clip": "RELOAD",
 	"low_ammo_text__blt_options__title": "Low Ammo Text",
 	"low_ammo_text__blt_options__desc": "Text that appears when your ammo is low",
 	"low_ammo_text__menu_component__text_font_size__title": "Font size",
@@ -13,5 +16,11 @@
 	"low_ammo_text__menu_component__text_offset_y__title": "Indicator vertical offset",
 	"low_ammo_text__menu_component__text_offset_y__desc": "Indicator vertical (Y) offset, relative to center",
 	"low_ammo_text__menu_component__text_alpha__title": "Indicator alpha",
-	"low_ammo_text__menu_component__text_alpha__desc": "Indicator alpha"
+	"low_ammo_text__menu_component__text_alpha__desc": "Indicator alpha",
+	"low_ammo_text__menu_component__text_fade_duration__title": "Fade duration",
+	"low_ammo_text__menu_component__text_fade_duration__desc": "Fade in/out duration, in milliseconds",
+	"low_ammo_text__menu_component__threshold_low_ammo_clip__title": "Low clip ammo threshold",
+	"low_ammo_text__menu_component__threshold_low_ammo_clip__desc": "Percentage of ammo in a clip before a prompt to reload is shown",
+	"low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__title": "Low total ammo threshold",
+	"low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__desc": "Percentage of clip ammo in total before warning is shown"
 }

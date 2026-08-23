@@ -1,0 +1,77 @@
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check release notes
+        run: |
+          NOTES_FILE=".changelog/${GITHUB_REF_NAME}.md"
+
+          if [ ! -f "$NOTES_FILE" ]; then
+            echo "::error::No release notes found for ${GITHUB_REF_NAME}"
+            echo "::error::Expected file: ${NOTES_FILE}"
+            exit 1
+          fi
+
+          cp "$NOTES_FILE" release-notes.md
+
+      - name: Merge changelogs
+        run: |
+          : > "CHANGELOG.md"
+
+          for file in $(find .changelog -name '*.md' | sort -Vr); do
+            if ! grep -q '[^[:space:]]' "$file"; then
+               continue
+             fi
+
+             if [ "$first" = false ]; then
+               printf '\n'
+             fi
+             first=false
+
+             awk '
+               { lines[NR] = $0 }
+               END {
+                 start = 1
+                 end = NR
+
+                 while (start <= end && lines[start] ~ /^[[:space:]]*$/)
+                   start++
+
+                 while (end >= start && lines[end] ~ /^[[:space:]]*$/)
+                   end--
+
+                 for (i = start; i <= end; i++)
+                   print lines[i]
+               }
+            ' "$file"
+          done > "CHANGELOG.md"
+
+      - name: Create ZIP
+        run: |
+          mkdir -p "release/Low Ammo Text"
+          cp -r "src/." "release/Low Ammo Text/"
+          cd "release"
+          zip -r "../Low Ammo Text.zip" "Low Ammo Text"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            "Low Ammo Text.zip" \
+            "CHANGELOG.md" \
+            --title "${GITHUB_REF_NAME}" \
+            --notes-file release-notes.md
