@@ -35,3 +35,26 @@ end
 function LowAmmoText.tbl.fill_missing(target, filler)
 	return fill_missing_rec(target, filler)
 end
+
+---@param t table
+---@param on_get fun(k: any)
+---@param on_set fun(k: any, v: any)
+---@return table
+function LowAmmoText.tbl.proxy(t, on_get, on_set)
+	local proxy = {}
+	local mt = {}
+
+	function mt.__index(_t, k)
+		local val = t[k]
+		on_get(k)
+		return val
+	end
+
+	function mt.__newindex(_t, k, v)
+		t[k] = v
+		on_set(k, v)
+	end
+
+	setmetatable(proxy, mt)
+	return proxy
+end
