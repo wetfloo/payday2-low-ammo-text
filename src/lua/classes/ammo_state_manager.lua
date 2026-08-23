@@ -8,6 +8,7 @@
 ---@class (exact) LowAmmoText.AmmoStateManager
 ---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
 ---@field destroy fun(self: LowAmmoText.AmmoStateManager)
+---@field set_state_values fun(self: LowAmmoText.AmmoStateManager, state_values: AmmoStateValues)
 ---@field state_values AmmoStateValues
 ---@field private _state_values_raw AmmoStateValues
 
@@ -42,6 +43,7 @@ local presets_sorted = {
 
 ---@param rendered_text LowAmmoText.RenderedText
 function LowAmmoText.AmmoStateManager:init(rendered_text)
+	---@diagnostic disable-next-line: missing-fields
 	self._state_values_raw = {}
 	for _, preset in ipairs(presets_sorted) do
 		self._state_values_raw[preset.k] = false
@@ -87,11 +89,17 @@ function LowAmmoText.AmmoStateManager:set_font_size(val)
 	self._rendered_text:set_font_size(val)
 end
 
+---@param state_values AmmoStateValues
+function LowAmmoText.AmmoStateManager:set_state_values(state_values)
+	self._state_values_raw = state_values
+	self:_on_state_value_update()
+end
+
 function LowAmmoText.AmmoStateManager:_on_state_value_update()
 	local preset
 
 	for _, preset_curr in ipairs(presets_sorted) do
-		if self.state_values[preset_curr.k] then
+		if self._state_values_raw[preset_curr.k] then
 			preset = preset_curr
 			break
 		end
