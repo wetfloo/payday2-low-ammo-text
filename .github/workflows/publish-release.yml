@@ -72,6 +72,7 @@ jobs:
         run: |
           gh release create "${GITHUB_REF_NAME}" \
             "LowAmmoText.zip" \
+            "blt-meta.json" \
             "CHANGELOG.md" \
             --title "${GITHUB_REF_NAME}" \
             --notes-file release-notes.md
