@@ -61,10 +61,10 @@ jobs:
 
       - name: Create ZIP
         run: |
-          mkdir -p "release/LowAmmoText"
-          cp -r "src/." "release/LowAmmoText/"
+          mkdir -p "release/Low Ammo Text"
+          cp -r "src/." "release/Low Ammo Text/"
           cd "release"
-          zip -r "../LowAmmoText.zip" "LowAmmoText"
+          zip -r "../LowAmmoText.zip" "Low Ammo Text"
 
       - name: Create GitHub Release
         env:
