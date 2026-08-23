@@ -65,12 +65,13 @@ local function init_hooks()
 				LowAmmoText.ammo_state_manager = LowAmmoText.AmmoStateManager:new(rendered_text)
 			end
 
-			LowAmmoText.ammo_state_manager.state_values.no_ammo = current_left <= 0
-			LowAmmoText.ammo_state_manager.state_values.low_total_ammo = current_left
-				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip
-			LowAmmoText.ammo_state_manager.state_values.clip_empty = current_clip == 0
+			-- This is simply not okay, but field set order matters here. I should fix it later.
 			LowAmmoText.ammo_state_manager.state_values.low_ammo_clip = current_clip
 				<= max_clip * LowAmmoText._data.threshold_low_ammo_clip
+			LowAmmoText.ammo_state_manager.state_values.clip_empty = current_clip <= 0
+			LowAmmoText.ammo_state_manager.state_values.low_total_ammo = current_left
+				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip
+			LowAmmoText.ammo_state_manager.state_values.no_ammo = current_left <= 0
 		end
 	)
 
