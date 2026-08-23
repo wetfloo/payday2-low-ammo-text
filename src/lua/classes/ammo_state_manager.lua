@@ -26,6 +26,11 @@ local presets_sorted = {
 		color = Color(1.0, 0.98, 0.35),
 	},
 	{
+		k = "swan_song_aced",
+		s_id = "low_ammo_text__ammo_state__swan_song_aced",
+		color = Color(0.24, 0.66, 0.93),
+	},
+	{
 		k = "bulletstorm",
 		s_id = "low_ammo_text__ammo_state__bulletstorm",
 		color = Color(0.5, 0.9, 0.28),

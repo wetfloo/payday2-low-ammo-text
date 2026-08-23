@@ -2,6 +2,7 @@
 	"low_ammo_text__ammo_state__no_ammo": "NO AMMO",
 	"low_ammo_text__ammo_state__low_total": "LOW AMMO",
 	"low_ammo_text__ammo_state__clip_empty": "EMPTY",
+	"low_ammo_text__ammo_state__swan_song_aced": "SWAN SONG ACED",
 	"low_ammo_text__ammo_state__bulletstorm": "BULLETSTORM",
 	"low_ammo_text__ammo_state__low_clip": "RELOAD",
 	"low_ammo_text__blt_options__title": "Low Ammo Text",
