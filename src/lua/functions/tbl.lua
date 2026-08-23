@@ -37,22 +37,27 @@ function LowAmmoText.tbl.fill_missing(target, filler)
 end
 
 ---@param t table
----@param on_get fun(k: any)
----@param on_set fun(k: any, v: any)
+---@param on_get fun(k: any)|nil
+---@param on_set fun(k: any, v: any)|nil
 ---@return table
-function LowAmmoText.tbl.proxy(t, on_get, on_set)
+function LowAmmoText.tbl.on_access_post(t, on_get, on_set)
+	-- See https://www.lua.org/pil/13.4.4.html for this technique explanation.
 	local proxy = {}
 	local mt = {}
 
 	function mt.__index(_t, k)
 		local val = t[k]
-		on_get(k)
+		if on_get ~= nil and type(on_get) == "function" then
+			on_get(k)
+		end
 		return val
 	end
 
 	function mt.__newindex(_t, k, v)
 		t[k] = v
-		on_set(k, v)
+		if on_set ~= nil and type(on_set) == "function" then
+			on_set(k, v)
+		end
 	end
 
 	setmetatable(proxy, mt)
