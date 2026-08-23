@@ -28,7 +28,7 @@
 	"updates": [
 		{
 			"identifier": "inertia__low_ammo_text__github_release",
-			"meta": "https://github.com/wetfloo/payday2-low-ammo-text/tree/release-latest/src/meta.json",
+			"meta": "https://raw.githubusercontent.com/wetfloo/payday2-low-ammo-text/refs/heads/release-latest/src/meta.json",
 			"download": "https://github.com/wetfloo/payday2-low-ammo-text/releases/latest/download/Low Ammo Text.zip",
 			"patchnotes": "https://github.com/wetfloo/payday2-low-ammo-text/releases/latest/download/CHANGELOG.md"
 		}
