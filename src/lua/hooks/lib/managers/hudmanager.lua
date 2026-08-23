@@ -47,42 +47,36 @@ local function get_or_init_ammo_state_manager()
 end
 
 local function init_hooks()
-	Hooks:PostHook(
-		hook_class,
-		hook_fn,
-		"LowAmmoText__posthook__ammo_state_handler",
-		function(_self)
-			if not managers.player:player_unit() then
-				return
-			end
-
-			local equipped_unit =
-				managers.player:player_unit():movement():current_state()._equipped_unit
-			if
-				not equipped_unit
-				or not alive(equipped_unit)
-				or equipped_unit ~= managers.player:equipped_weapon_unit()
-			then
-				return
-			end
-
-			LowAmmoText:load_configuration()
-
-			local ammo_state_manager = get_or_init_ammo_state_manager()
-
-			local max_clip = equipped_unit:base():get_ammo_max_per_clip()
-			local current_left = equipped_unit:base():get_ammo_total()
-			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
-			ammo_state_manager:update_state_values({
-				no_ammo = current_left <= 0,
-				low_total_ammo = current_left
-					<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip,
-				clip_empty = current_clip <= 0,
-				low_ammo_clip = current_clip
-					<= max_clip * LowAmmoText._data.threshold_low_ammo_clip,
-			})
+	Hooks:PostHook(hook_class, hook_fn, "LowAmmoText__posthook__ammo_state_handler", function(_self)
+		if not managers.player:player_unit() then
+			return
 		end
-	)
+
+		local equipped_unit =
+			managers.player:player_unit():movement():current_state()._equipped_unit
+		if
+			not equipped_unit
+			or not alive(equipped_unit)
+			or equipped_unit ~= managers.player:equipped_weapon_unit()
+		then
+			return
+		end
+
+		LowAmmoText:load_configuration()
+
+		local ammo_state_manager = get_or_init_ammo_state_manager()
+
+		local max_clip = equipped_unit:base():get_ammo_max_per_clip()
+		local current_left = equipped_unit:base():get_ammo_total()
+		local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
+		ammo_state_manager:update_state_values({
+			no_ammo = current_left <= 0,
+			low_total_ammo = current_left
+				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip,
+			clip_empty = current_clip <= 0,
+			low_ammo_clip = current_clip <= max_clip * LowAmmoText._data.threshold_low_ammo_clip,
+		})
+	end)
 
 	Hooks:PostHook(
 		PlayerManager,
@@ -103,20 +97,42 @@ local function init_hooks()
 	)
 
 	Hooks:PostHook(
-		hook_class,
-		"destroy",
-		"LowAmmoText__posthook__cleanup_handler",
-		function(_self)
-			if LowAmmoText.ammo_state_manager then
-				LowAmmoText.ammo_state_manager:destroy()
-				LowAmmoText.ammo_state_manager = nil
+		PlayerManager,
+		"activate_temporary_upgrade",
+		"LowAmmoText__posthook__swan_song_aced_state_handler",
+		function(self, category, upgrade)
+			-- Why is Swan Song called... that?
+			-- I don't know, ask whoever programmed this shit.
+			if upgrade ~= "berserker_damage_multiplier" then
+				return
 			end
+
+			-- Pulled from game's code
+			local upgrade_value = self:upgrade_value(category, upgrade)
+			if not upgrade_value then
+				return
+			end
+			local time = upgrade_value[2]
+
+			local ammo_state_manager = get_or_init_ammo_state_manager()
+
+			ammo_state_manager:update_state_values({ swan_song_aced = true })
+			DelayedCalls:Add("LowAmmoText__delayed__swan_song_aced_handle_reset", time, function()
+				ammo_state_manager:update_state_values({ swan_song_aced = false })
+			end)
 		end
 	)
+
+	Hooks:PostHook(hook_class, "destroy", "LowAmmoText__posthook__cleanup_handler", function(_self)
+		if LowAmmoText.ammo_state_manager then
+			LowAmmoText.ammo_state_manager:destroy()
+			LowAmmoText.ammo_state_manager = nil
+		end
+	end)
 end
 
 if delayed then
-	DelayedCalls:Add("LowAmmoText_hudmanager_delayed", 2, init_hooks)
+	DelayedCalls:Add("LowAmmoText__delayed__init_hooks", 2, init_hooks)
 else
 	init_hooks()
 end
