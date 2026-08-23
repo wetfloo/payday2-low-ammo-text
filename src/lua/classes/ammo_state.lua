@@ -11,6 +11,9 @@
 ---@field state_values AmmoStateValues
 ---@field private _state_values_raw AmmoStateValues
 
+-- We depend on this, so better init it just in case.
+LowAmmoText.dofile("classes/rendered_text")
+
 LowAmmoText.AmmoStateManager = LowAmmoText.AmmoStateManager or class()
 
 local presets_sorted = {

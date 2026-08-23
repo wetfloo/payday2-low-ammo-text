@@ -40,14 +40,8 @@ local function init_hooks()
 			local current_left = equipped_unit:base():get_ammo_total()
 			local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
 
-			local low_ammo_clip = current_clip
-				<= max_clip * LowAmmoText._data.threshold_low_ammo_clip
-			local low_ammo = current_left
-				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip
-			local no_ammo = current_left <= 0
-
-			if not LowAmmoText.rendered_text then
-				LowAmmoText.rendered_text = LowAmmoText.RenderedText:new({
+			if not LowAmmoText.ammo_state_manager then
+				local rendered_text = LowAmmoText.RenderedText:new({
 					s = "",
 					text_configuration = {
 						color = Color.white,
@@ -67,30 +61,16 @@ local function init_hooks()
 						},
 					},
 				})
+
+				LowAmmoText.ammo_state_manager = LowAmmoText.AmmoStateManager:new(rendered_text)
 			end
 
-			if no_ammo or low_ammo or low_ammo_clip then
-				LowAmmoText.rendered_text:show(LowAmmoText._data.text_fade_duration_secs)
-
-				if no_ammo then
-					LowAmmoText.rendered_text:set_s(
-						managers.localization:text("low_ammo_text__ammo_state__no_ammo")
-					)
-					LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.0, 0.0))
-				elseif low_ammo then
-					LowAmmoText.rendered_text:set_s(
-						managers.localization:text("low_ammo_text__ammo_state__low_total")
-					)
-					LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.5, 0.0))
-				elseif low_ammo_clip then
-					LowAmmoText.rendered_text:set_s(
-						managers.localization:text("low_ammo_text__ammo_state__low_clip")
-					)
-					LowAmmoText.rendered_text:set_text_color(Color(0.9, 0.9, 0.9))
-				end
-			else
-				LowAmmoText.rendered_text:hide(LowAmmoText._data.text_fade_duration_secs)
-			end
+			LowAmmoText.ammo_state_manager.state_values.no_ammo = current_left <= 0
+			LowAmmoText.ammo_state_manager.state_values.low_total_ammo = current_left
+				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip
+			LowAmmoText.ammo_state_manager.state_values.clip_empty = current_clip == 0
+			LowAmmoText.ammo_state_manager.state_values.low_ammo_clip = current_clip
+				<= max_clip * LowAmmoText._data.threshold_low_ammo_clip
 		end
 	)
 
@@ -99,9 +79,9 @@ local function init_hooks()
 		"destroy",
 		"LowAmmoText_set_teammate_ammo_amount_destroy",
 		function(_self)
-			if LowAmmoText.rendered_text then
-				LowAmmoText.rendered_text:destroy()
-				LowAmmoText.rendered_text = nil
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:destroy()
+				LowAmmoText.ammo_state_manager = nil
 			end
 		end
 	)

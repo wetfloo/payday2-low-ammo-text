@@ -18,6 +18,7 @@ LowAmmoText.dofile("functions/tbl")
 -- keep-sorted end
 
 -- keep-sorted start
+LowAmmoText.dofile("classes/ammo_state")
 LowAmmoText.dofile("classes/rendered_text")
 -- keep-sorted end
 
