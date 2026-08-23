@@ -61,17 +61,17 @@ jobs:
 
       - name: Create ZIP
         run: |
-          mkdir -p "release/Low Ammo Text"
-          cp -r "src/." "release/Low Ammo Text/"
+          mkdir -p "release/LowAmmoText"
+          cp -r "src/." "release/LowAmmoText/"
           cd "release"
-          zip -r "../Low Ammo Text.zip" "Low Ammo Text"
+          zip -r "../LowAmmoText.zip" "LowAmmoText"
 
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            "Low Ammo Text.zip" \
+            "LowAmmoText.zip" \
             "CHANGELOG.md" \
             --title "${GITHUB_REF_NAME}" \
             --notes-file release-notes.md
