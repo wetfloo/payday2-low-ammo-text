@@ -5,6 +5,12 @@
 ---@field bulletstorm boolean
 ---@field low_clip_ammo boolean
 
+---@class (exact) LowAmmoText.AmmoStateManager
+---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
+---@field destroy fun(self: LowAmmoText.AmmoStateManager)
+---@field state_values AmmoStateValues
+---@field private _state_values_raw AmmoStateValues
+
 LowAmmoText.AmmoStateManager = LowAmmoText.AmmoStateManager or class()
 
 local presets_sorted = {
