@@ -1,13 +1,14 @@
 ---@class (exact) AmmoStateValues
----@field no_ammo boolean
----@field low_total_ammo boolean
----@field clip_empty boolean
----@field bulletstorm boolean
----@field low_clip_ammo boolean
+---@field no_ammo? boolean
+---@field low_total_ammo? boolean
+---@field clip_empty? boolean
+---@field bulletstorm? boolean
+---@field low_clip_ammo? boolean
 
 ---@class (exact) LowAmmoText.AmmoStateManager
 ---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
 ---@field destroy fun(self: LowAmmoText.AmmoStateManager)
+---@field alive fun(self: LowAmmoText.AmmoStateManager): boolean
 ---@field update_state_values fun(self: LowAmmoText.AmmoStateManager, state_values: AmmoStateValues)
 ---@field state_values AmmoStateValues
 ---@field private _state_values AmmoStateValues
@@ -20,11 +21,6 @@ LowAmmoText.AmmoStateManager = LowAmmoText.AmmoStateManager or class()
 local presets_sorted = {
 	{ k = "no_ammo", s_id = "low_ammo_text__ammo_state__no_ammo", color = Color(1.0, 0.0, 0.0) },
 	{
-		k = "low_total_ammo",
-		s_id = "low_ammo_text__ammo_state__low_total",
-		color = Color(1.0, 0.5, 0.0),
-	},
-	{
 		k = "clip_empty",
 		s_id = "low_ammo_text__ammo_state__clip_empty",
 		color = Color(1.0, 0.98, 0.35),
@@ -35,6 +31,11 @@ local presets_sorted = {
 		color = Color(0.5, 0.9, 0.28),
 	},
 	{
+		k = "low_total_ammo",
+		s_id = "low_ammo_text__ammo_state__low_total",
+		color = Color(1.0, 0.5, 0.0),
+	},
+	{
 		k = "low_ammo_clip",
 		s_id = "low_ammo_text__ammo_state__low_clip",
 		color = Color(0.9, 0.9, 0.9),
@@ -43,7 +44,6 @@ local presets_sorted = {
 
 ---@param rendered_text LowAmmoText.RenderedText
 function LowAmmoText.AmmoStateManager:init(rendered_text)
-	---@diagnostic disable-next-line: missing-fields
 	self._state_values = {}
 	for _, preset in ipairs(presets_sorted) do
 		self._state_values[preset.k] = false
