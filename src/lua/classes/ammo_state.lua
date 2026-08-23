@@ -59,6 +59,31 @@ function LowAmmoText.AmmoStateManager:destroy()
 	self._rendered_text = nil
 end
 
+---@param offset Offset
+function LowAmmoText.AmmoStateManager:set_offset(offset)
+	self._rendered_text:set_offset(offset)
+end
+
+---@param val number
+function LowAmmoText.AmmoStateManager:set_offset_x(val)
+	self._rendered_text:set_offset_x(val)
+end
+
+---@param val number
+function LowAmmoText.AmmoStateManager:set_offset_y(val)
+	self._rendered_text:set_offset_y(val)
+end
+
+---@param val number
+function LowAmmoText.AmmoStateManager:set_alpha(val)
+	self._rendered_text:set_alpha(val)
+end
+
+---@param val number
+function LowAmmoText.AmmoStateManager:set_font_size(val)
+	self._rendered_text:set_font_size(val)
+end
+
 function LowAmmoText.AmmoStateManager:_on_state_value_update()
 	local preset
 
