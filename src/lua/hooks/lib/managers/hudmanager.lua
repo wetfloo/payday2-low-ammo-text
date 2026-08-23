@@ -50,7 +50,7 @@ local function init_hooks()
 	Hooks:PostHook(
 		hook_class,
 		hook_fn,
-		"LowAmmoText_set_teammate_ammo_amount_alive",
+		"LowAmmoText__posthook__ammo_state_handler",
 		function(_self)
 			if not managers.player:player_unit() then
 				return
@@ -87,7 +87,7 @@ local function init_hooks()
 	Hooks:PostHook(
 		PlayerManager,
 		"add_to_temporary_property",
-		"LowAmmoText_add_to_temporary_property",
+		"LowAmmoText__posthook__bulletstorm_state_handler",
 		function(_self, name, time, _value)
 			if name ~= "bullet_storm" or not time then
 				return
@@ -105,7 +105,7 @@ local function init_hooks()
 	Hooks:PostHook(
 		hook_class,
 		"destroy",
-		"LowAmmoText_set_teammate_ammo_amount_destroy",
+		"LowAmmoText__posthook__cleanup_handler",
 		function(_self)
 			if LowAmmoText.ammo_state_manager then
 				LowAmmoText.ammo_state_manager:destroy()
