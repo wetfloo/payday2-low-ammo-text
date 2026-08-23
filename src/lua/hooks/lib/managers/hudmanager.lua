@@ -85,6 +85,24 @@ local function init_hooks()
 	)
 
 	Hooks:PostHook(
+		PlayerManager,
+		"add_to_temporary_property",
+		"LowAmmoText_add_to_temporary_property",
+		function(_self, name, time, _value)
+			if name ~= "bullet_storm" or not time then
+				return
+			end
+
+			local ammo_state_manager = get_or_init_ammo_state_manager()
+
+			ammo_state_manager:update_state_values({ bulletstorm = true })
+			DelayedCalls:Add("LowAmmoText__delayed__bulletstorm_handle_reset", time, function()
+				ammo_state_manager:update_state_values({ bulletstorm = false })
+			end)
+		end
+	)
+
+	Hooks:PostHook(
 		hook_class,
 		"destroy",
 		"LowAmmoText_set_teammate_ammo_amount_destroy",
