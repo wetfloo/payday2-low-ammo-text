@@ -73,13 +73,19 @@ local function init_hooks()
 				LowAmmoText.rendered_text:show(LowAmmoText._data.text_fade_duration_secs)
 
 				if no_ammo then
-					LowAmmoText.rendered_text:set_s(managers.localization:text("low_ammo_text__ammo_state__no_ammo"))
+					LowAmmoText.rendered_text:set_s(
+						managers.localization:text("low_ammo_text__ammo_state__no_ammo")
+					)
 					LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.0, 0.0))
 				elseif low_ammo then
-					LowAmmoText.rendered_text:set_s(managers.localization:text("low_ammo_text__ammo_state__low_total"))
+					LowAmmoText.rendered_text:set_s(
+						managers.localization:text("low_ammo_text__ammo_state__low_total")
+					)
 					LowAmmoText.rendered_text:set_text_color(Color(1.0, 0.5, 0.0))
 				elseif low_ammo_clip then
-					LowAmmoText.rendered_text:set_s(managers.localization:text("low_ammo_text__ammo_state__low_clip"))
+					LowAmmoText.rendered_text:set_s(
+						managers.localization:text("low_ammo_text__ammo_state__low_clip")
+					)
 					LowAmmoText.rendered_text:set_text_color(Color(0.9, 0.9, 0.9))
 				end
 			else

@@ -93,17 +93,4 @@ function LowAmmoText:save_configuration()
 	return result
 end
 
-if RequiredScript == "lib/entry" then
-	LowAmmoText.dofile("hooks/lib/entry")
-	return
-end
-
-if RequiredScript == "lib/managers/hudmanager" then
-	LowAmmoText.dofile("hooks/managers/hudmanager")
-	return
-end
-
-if RequiredScript == "lib/managers/menumanager" then
-	LowAmmoText.dofile("hooks/managers/menumanager")
-	return
-end
+LowAmmoText.dofile("hooks/" .. RequiredScript)
