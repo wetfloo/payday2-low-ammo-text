@@ -18,7 +18,18 @@
 ---@field color Color
 ---@field additional_offset Offset
 
----@class RenderedText
+---@class LowAmmoText.RenderedText
+---@field init fun(self: LowAmmoText.RenderedText, param: RenderTextInputParams)
+---@field destroy fun(self: LowAmmoText.RenderedText)
+---@field set_offset fun(self: LowAmmoText.RenderedText, offset: Offset)
+---@field set_offset_x fun(self: LowAmmoText.RenderedText, val: number)
+---@field set_offset_y fun(self: LowAmmoText.RenderedText, val: number)
+---@field set_text_color fun(self: LowAmmoText.RenderedText, color: Color)
+---@field set_s fun(self: LowAmmoText.RenderedText, s: string)
+---@field set_alpha fun(self: LowAmmoText.RenderedText, val: number)
+---@field show fun(self: LowAmmoText.RenderedText, fade_in_duration_secs: number)
+---@field hide fun(self: LowAmmoText.RenderedText, fade_out_duration_secs: number)
+---@field set_font_size fun(self: LowAmmoText.RenderedText, val: number)
 ---@field private _hud HUD
 ---@field private _panel HUDPanel
 ---@field private _s string
