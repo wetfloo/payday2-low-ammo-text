@@ -16,8 +16,8 @@ Hooks:Add(
 
 			LowAmmoText._data.text_font_size = val
 
-			if LowAmmoText.rendered_text then
-				LowAmmoText.rendered_text:set_font_size(val)
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:set_font_size(val)
 			end
 		end
 
@@ -26,8 +26,8 @@ Hooks:Add(
 
 			LowAmmoText._data.text_offset_x = val
 
-			if LowAmmoText.rendered_text then
-				LowAmmoText.rendered_text:set_offset_x(val)
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:set_offset_x(val)
 			end
 		end
 
@@ -36,8 +36,8 @@ Hooks:Add(
 
 			LowAmmoText._data.text_offset_y = val
 
-			if LowAmmoText.rendered_text then
-				LowAmmoText.rendered_text:set_offset_y(val)
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:set_offset_y(val)
 			end
 		end
 
@@ -46,8 +46,8 @@ Hooks:Add(
 
 			LowAmmoText._data.text_alpha = val
 
-			if LowAmmoText.rendered_text then
-				LowAmmoText.rendered_text:set_alpha(val)
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:set_alpha(val)
 			end
 		end
 
