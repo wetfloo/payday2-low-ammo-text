@@ -67,12 +67,14 @@ local function init_hooks()
 		local ammo_state_manager = get_or_init_ammo_state_manager()
 
 		local max_clip = equipped_unit:base():get_ammo_max_per_clip()
-		local current_left = equipped_unit:base():get_ammo_total()
+		local max_total = equipped_unit:base():get_ammo_max()
 		local current_clip = equipped_unit:base():get_ammo_remaining_in_clip()
+		local current_total = equipped_unit:base():get_ammo_total()
+
 		ammo_state_manager:update_state_values({
-			no_ammo = current_left <= 0,
-			low_total_ammo = current_left
-				<= max_clip * LowAmmoText._data.threshold_low_ammo_total_from_clip,
+			no_ammo = current_total <= 0,
+			low_total_ammo = current_total
+				<= max_total * LowAmmoText._data.threshold_low_ammo_total,
 			clip_empty = current_clip <= 0,
 			low_ammo_clip = current_clip <= max_clip * LowAmmoText._data.threshold_low_ammo_clip,
 		})

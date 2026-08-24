@@ -3,7 +3,7 @@
 	"description": "Shows a text popup when your ammo is low",
 	"author": "inertia",
 	"contact": "frozenyonder@gmail.com",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"blt_version": 2,
 	"priority": 10,
 	"color": "255 150 69",
@@ -23,7 +23,12 @@
 		{
 			"hook_id": "lib/managers/menumanager",
 			"script_path": "lua/main.lua"
+		},
+		{
+			"hook_id": "lib/states/ingamewaitingforrespawn",
+			"script_path": "lua/main.lua"
 		}
+
 	],
 	"updates": [
 		{

@@ -79,15 +79,15 @@
 		},
 		{
 			"type": "slider",
-			"id": "low_ammo_text__menu_component__threshold_low_ammo_total_from_clip",
-			"callback": "low_ammo_text__menu_callback__threshold_low_ammo_total_from_clip_percent",
-			"title": "low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__title",
-			"description": "low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__desc",
+			"id": "low_ammo_text__menu_component__threshold_low_ammo_total",
+			"callback": "low_ammo_text__menu_callback__threshold_low_ammo_total_percent",
+			"title": "low_ammo_text__menu_component__threshold_low_ammo_total__title",
+			"description": "low_ammo_text__menu_component__threshold_low_ammo_total__desc",
 			"min": 0,
 			"max": 100,
 			"step": 1,
 			"show_value": true,
-			"value": "threshold_low_ammo_total_from_clip_percent"
+			"value": "threshold_low_ammo_total_percent"
 		}
 	]
 }

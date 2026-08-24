@@ -80,11 +80,11 @@ end
 
 function LowAmmoText.RenderedText:destroy()
 	if self._text and alive(self._text) then
-		self._text:remove()
+		self._panel:remove(self._text)
 		self._text = nil
 	end
 	if self._shadow and alive(self._shadow) then
-		self._shadow:remove()
+		self._panel:remove(self._shadow)
 		self._shadow = nil
 	end
 end
@@ -145,6 +145,10 @@ function LowAmmoText.RenderedText:show(fade_in_duration_secs)
 	end
 	self._visible = true
 
+	if fade_in_duration_secs == nil then
+		fade_in_duration_secs = 0
+	end
+
 	-- Necessary for all the closure we're running next,
 	-- otherwise `self` would be overridden.
 	local t = self
@@ -167,6 +171,10 @@ function LowAmmoText.RenderedText:hide(fade_out_duration_secs)
 		return
 	end
 	self._visible = false
+
+	if fade_out_duration_secs == nil then
+		fade_out_duration_secs = 0
+	end
 
 	-- Necessary for all the closure we're running next,
 	-- otherwise `self` would be overridden.
