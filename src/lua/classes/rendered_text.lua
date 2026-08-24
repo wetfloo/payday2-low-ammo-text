@@ -80,11 +80,11 @@ end
 
 function LowAmmoText.RenderedText:destroy()
 	if self._text and alive(self._text) then
-		self._text:remove()
+		self._panel:remove(self._text)
 		self._text = nil
 	end
 	if self._shadow and alive(self._shadow) then
-		self._shadow:remove()
+		self._panel:remove(self._shadow)
 		self._shadow = nil
 	end
 end
