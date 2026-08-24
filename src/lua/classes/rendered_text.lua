@@ -145,6 +145,10 @@ function LowAmmoText.RenderedText:show(fade_in_duration_secs)
 	end
 	self._visible = true
 
+	if fade_in_duration_secs == nil then
+		fade_in_duration_secs = 0
+	end
+
 	-- Necessary for all the closure we're running next,
 	-- otherwise `self` would be overridden.
 	local t = self
@@ -167,6 +171,10 @@ function LowAmmoText.RenderedText:hide(fade_out_duration_secs)
 		return
 	end
 	self._visible = false
+
+	if fade_out_duration_secs == nil then
+		fade_out_duration_secs = 0
+	end
 
 	-- Necessary for all the closure we're running next,
 	-- otherwise `self` would be overridden.
