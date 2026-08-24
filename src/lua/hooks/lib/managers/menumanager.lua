@@ -67,12 +67,21 @@ Hooks:Add(
 			LowAmmoText._data.threshold_low_ammo_clip = val
 		end
 
+		---@deprecated
 		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_from_clip_percent = function(
 			_self,
 			item
 		)
 			local val = item:value() / 100
 			LowAmmoText._data.threshold_low_ammo_total_from_clip = val
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_percent = function(
+			_self,
+			item
+		)
+			local val = item:value() / 100
+			LowAmmoText._data.threshold_low_ammo_total = val
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)

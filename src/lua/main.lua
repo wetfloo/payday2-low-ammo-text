@@ -31,6 +31,8 @@ LowAmmoText._data = LowAmmoText._data
 		text_offset_y = 20,
 
 		threshold_low_ammo_clip = 0.25,
+		threshold_low_ammo_total = 0.25,
+		---@deprecated
 		threshold_low_ammo_total_from_clip = 0.5,
 	}
 
@@ -47,8 +49,13 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 				return percent(rawget(t, "threshold_low_ammo_clip"))
 			end
 
+			---@deprecated
 			function m.threshold_low_ammo_total_from_clip_percent()
 				return percent(rawget(t, "threshold_low_ammo_total_from_clip"))
+			end
+
+			function m.threshold_low_ammo_total_percent()
+				return percent(rawget(t, "threshold_low_ammo_total"))
 			end
 
 			function m.text_fade_duration_millis()

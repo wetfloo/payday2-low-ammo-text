@@ -24,6 +24,8 @@
 	"low_ammo_text__menu_component__text_fade_duration__desc": "Fade in/out duration, in milliseconds",
 	"low_ammo_text__menu_component__threshold_low_ammo_clip__title": "Low clip ammo threshold",
 	"low_ammo_text__menu_component__threshold_low_ammo_clip__desc": "Percentage of ammo in a clip before a prompt to reload is shown",
-	"low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__title": "Low total ammo threshold",
-	"low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__desc": "Percentage of clip ammo in total before warning is shown"
+	"low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__title": "Low total ammo from clip threshold (deprecated)",
+	"low_ammo_text__menu_component__threshold_low_ammo_total_from_clip__desc": "Percentage of clip ammo in total before warning is shown (deprecated)",
+	"low_ammo_text__menu_component__threshold_low_ammo_total__title": "Low total ammo threshold",
+	"low_ammo_text__menu_component__threshold_low_ammo_total__desc": "Percentage of ammo in total before warning is shown"
 }
