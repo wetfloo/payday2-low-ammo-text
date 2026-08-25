@@ -61,8 +61,8 @@ function LowAmmoText.AmmoStateManager:destroy()
 	if self._rendered_text then
 		---@type LowAmmoText.RenderedText
 		self._rendered_text:destroy()
+		self._rendered_text = nil
 	end
-	self._rendered_text = nil
 end
 
 ---@param offset Offset
