@@ -64,6 +64,7 @@ jobs:
           mkdir -p "release/Low Ammo Text"
           cp -r "src/." "release/Low Ammo Text/"
           cd "release"
+          rm "Low Ammo Text/blt-meta.json"
           zip -r "../LowAmmoText.zip" "Low Ammo Text"
 
       - name: Create GitHub Release
@@ -72,7 +73,7 @@ jobs:
         run: |
           gh release create "${GITHUB_REF_NAME}" \
             "LowAmmoText.zip" \
-            "blt-meta.json" \
+            "src/blt-meta.json" \
             "CHANGELOG.md" \
             --title "${GITHUB_REF_NAME}" \
             --notes-file release-notes.md
