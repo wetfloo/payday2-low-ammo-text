@@ -2,7 +2,7 @@
 
 ## About
 
-This is a mod displaying a warning when the ammo is low, like so:
+This is a mod displaying a warning when the ammo is low, (in bulletstorm, in swan song, etc.) like so:
 
 ![Demonstrating Low Ammo Text indicator](./.media/demo.gif)
 
@@ -12,8 +12,6 @@ It's also customizable, allowing to set font size, alpha, duration, etc.:
 
 It supports [SuperBLT](https://superblt.znix.xyz/)'s
 [auto-updates](https://superblt.znix.xyz/doc/mod_definition/updates/).
-
-(I don't really know what else to say about it)
 
 ## Planned features
 
