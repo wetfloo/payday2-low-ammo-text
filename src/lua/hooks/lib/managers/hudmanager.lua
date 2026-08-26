@@ -98,9 +98,13 @@ local function init_hooks()
 			local ammo_state_manager = get_or_init_ammo_state_manager()
 
 			ammo_state_manager:update_state_values({ bulletstorm = true })
-			DelayedCalls:Add(LowAmmoText.mod_name .. "__delayed__bulletstorm_handle_reset", time, function()
-				ammo_state_manager:update_state_values({ bulletstorm = false })
-			end)
+			DelayedCalls:Add(
+				LowAmmoText.mod_name .. "__delayed__bulletstorm_handle_reset",
+				time,
+				function()
+					ammo_state_manager:update_state_values({ bulletstorm = false })
+				end
+			)
 		end
 	)
 
@@ -125,18 +129,27 @@ local function init_hooks()
 			local ammo_state_manager = get_or_init_ammo_state_manager()
 
 			ammo_state_manager:update_state_values({ swan_song_aced = true })
-			DelayedCalls:Add(LowAmmoText.mod_name .. "__delayed__swan_song_aced_handle_reset", time, function()
-				ammo_state_manager:update_state_values({ swan_song_aced = false })
-			end)
+			DelayedCalls:Add(
+				LowAmmoText.mod_name .. "__delayed__swan_song_aced_handle_reset",
+				time,
+				function()
+					ammo_state_manager:update_state_values({ swan_song_aced = false })
+				end
+			)
 		end
 	)
 
-	Hooks:PostHook(hook_class, "destroy", LowAmmoText.mod_name .. "__posthook__cleanup_handler", function(_self)
-		if LowAmmoText.ammo_state_manager then
-			LowAmmoText.ammo_state_manager:destroy()
-			LowAmmoText.ammo_state_manager = nil
+	Hooks:PostHook(
+		hook_class,
+		"destroy",
+		LowAmmoText.mod_name .. "__posthook__cleanup_handler",
+		function(_self)
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:destroy()
+				LowAmmoText.ammo_state_manager = nil
+			end
 		end
-	end)
+	)
 end
 
 if delayed then
