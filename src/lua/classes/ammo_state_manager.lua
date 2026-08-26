@@ -36,14 +36,14 @@ local presets_sorted = {
 		color = Color(0.5, 0.9, 0.28),
 	},
 	{
-		k = "low_ammo_clip",
-		s_id = "low_ammo_text__ammo_state__low_clip",
-		color = Color(0.9, 0.9, 0.9),
-	},
-	{
 		k = "low_total_ammo",
 		s_id = "low_ammo_text__ammo_state__low_total",
 		color = Color(1.0, 0.5, 0.0),
+	},
+	{
+		k = "low_ammo_clip",
+		s_id = "low_ammo_text__ammo_state__low_clip",
+		color = Color(0.9, 0.9, 0.9),
 	},
 }
 
