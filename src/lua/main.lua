@@ -5,8 +5,10 @@
 
 _G.LowAmmoText = _G.LowAmmoText or {}
 
+LowAmmoText.mod_name = LowAmmoText.mod_name or "LowAmmoText"
+
 LowAmmoText.mod_path = LowAmmoText.mod_path or ModPath
-LowAmmoText.save_path = LowAmmoText.save_path or SavePath .. "LowAmmoText_options.json"
+LowAmmoText.save_path = LowAmmoText.save_path or SavePath .. LowAmmoText.mod_name .. "_options.json"
 
 function LowAmmoText.dofile(name)
 	return dofile(LowAmmoText.mod_path .. "lua/" .. name .. ".lua")

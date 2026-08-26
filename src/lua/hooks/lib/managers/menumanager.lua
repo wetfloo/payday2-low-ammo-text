@@ -1,6 +1,6 @@
 Hooks:Add(
 	"MenuManagerSetupCustomMenus",
-	"MenuManagerSetupCustomMenus_LowAmmoText",
+	"MenuManagerSetupCustomMenus_" .. LowAmmoText.mod_name,
 	function(_menu_manager, _nodes)
 		LowAmmoText:load_configuration()
 

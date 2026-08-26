@@ -3,9 +3,9 @@
 	"runtime.version": "LuaJIT",
 	"workspace.preloadFileSize": 10000,
 	"workspace.library": [
-		"./vendor/PAYDAY-2",
-		"./vendor/SuperBLT",
-		"./vendor/BeardLib"
+		"./base/PAYDAY-2",
+		"./base/SuperBLT",
+		"./base/BeardLib"
 	],
 	"diagnostics.globals": [
 		"Color",
