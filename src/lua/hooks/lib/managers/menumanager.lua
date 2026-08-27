@@ -89,17 +89,7 @@ Hooks:Add(
 			item
 		)
 			local val = item:value()
-			LowAmmoText._data.pulse_text_animation_start =
-				math.min(val, LowAmmoText._data.pulse_text_animation_end)
-		end
-
-		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_end = function(
-			_self,
-			item
-		)
-			local val = item:value()
-			LowAmmoText._data.pulse_text_animation_end =
-				math.max(val, LowAmmoText._data.pulse_text_animation_start)
+			LowAmmoText._data.pulse_text_animation_start = val
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul = function(
