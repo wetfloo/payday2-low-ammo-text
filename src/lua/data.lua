@@ -60,4 +60,4 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 	}
 setmetatable(LowAmmoText._default_data, LowAmmoText._mt_data)
 
-LowAmmoText._data = LowAmmoText._data or deep_clone(LowAmmoText._default_data)
+LowAmmoText._data = LowAmmoText._data or LowAmmoText.tbl.deep_clone(LowAmmoText._default_data)
