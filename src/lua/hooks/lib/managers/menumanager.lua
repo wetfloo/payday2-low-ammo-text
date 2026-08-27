@@ -92,12 +92,12 @@ Hooks:Add(
 			LowAmmoText._data.pulse_text_animation_start = val
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul = function(
+		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log = function(
 			_self,
 			item
 		)
 			local val = item:value()
-			LowAmmoText._data.pulse_text_animation_speed_mul = val
+			LowAmmoText._data.pulse_text_animation_speed_mul = math.log10(val)
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)

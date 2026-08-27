@@ -41,6 +41,10 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 				return rawget(t, "text_fade_duration_secs") * 1000
 			end
 
+			function m.pulse_text_animation_speed_mul_log()
+				return math.pow(10, rawget(t, "pulse_text_animation_speed_mul"))
+			end
+
 			local result = m[k]
 			if result and type(result) == "function" then
 				return result()
