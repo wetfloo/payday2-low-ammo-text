@@ -55,16 +55,14 @@ Hooks:Add(
 			_self,
 			item
 		)
-			local val = item:value() / 1000
-			LowAmmoText._data.text_fade_duration_secs = val
+			LowAmmoText._data.text_fade_duration_millis = item:value()
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_clip_percent = function(
 			_self,
 			item
 		)
-			local val = item:value() / 100
-			LowAmmoText._data.threshold_low_ammo_clip = val
+			LowAmmoText._data.threshold_low_ammo_clip_percent = item:value()
 		end
 
 		---@deprecated
@@ -72,32 +70,28 @@ Hooks:Add(
 			_self,
 			item
 		)
-			local val = item:value() / 100
-			LowAmmoText._data.threshold_low_ammo_total_from_clip = val
+			LowAmmoText._data.threshold_low_ammo_total_from_clip_percent = item:value()
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_percent = function(
 			_self,
 			item
 		)
-			local val = item:value() / 100
-			LowAmmoText._data.threshold_low_ammo_total = val
+			LowAmmoText._data.threshold_low_ammo_total_percent = item:value()
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_start = function(
 			_self,
 			item
 		)
-			local val = item:value()
-			LowAmmoText._data.pulse_text_animation_start = val
+			LowAmmoText._data.pulse_text_animation_start = item:value()
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log = function(
 			_self,
 			item
 		)
-			local val = item:value()
-			LowAmmoText._data.pulse_text_animation_speed_mul = math.log10(val)
+			LowAmmoText._data.pulse_text_animation_speed_mul_log = item:value()
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)

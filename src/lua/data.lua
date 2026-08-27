@@ -46,6 +46,36 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 				return result()
 			end
 		end,
+
+		__newindex = function(t, k, v)
+			local m = {}
+
+			function m.threshold_low_ammo_clip_percent()
+				return rawset(t, "threshold_low_ammo_clip", v / 100)
+			end
+
+			---@deprecated
+			function m.threshold_low_ammo_total_from_clip_percent()
+				return rawset(t, "threshold_low_ammo_total_from_clip", v / 100)
+			end
+
+			function m.threshold_low_ammo_total_percent()
+				return rawset(t, "threshold_low_ammo_total", v / 100)
+			end
+
+			function m.text_fade_duration_millis()
+				return rawset(t, "text_fade_duration_secs", v / 1000)
+			end
+
+			function m.pulse_text_animation_speed_mul_log()
+				return rawset(t, "pulse_text_animation_speed_mul", math.log10(v))
+			end
+
+			local result = m[k]
+			if result and type(result) == "function" then
+				return result()
+			end
+		end,
 	}
 
 setmetatable(LowAmmoText._data, LowAmmoText._mt_data)
