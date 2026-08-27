@@ -58,26 +58,26 @@ Hooks:Add(
 			LowAmmoText._data.text_fade_duration_millis = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_clip_percent = function(
+		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_clip = function(
 			_self,
 			item
 		)
-			LowAmmoText._data.threshold_low_ammo_clip_percent = item:value()
+			LowAmmoText._data.threshold_low_ammo_clip = item:value()
 		end
 
 		---@deprecated
-		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_from_clip_percent = function(
+		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_from_clip = function(
 			_self,
 			item
 		)
-			LowAmmoText._data.threshold_low_ammo_total_from_clip_percent = item:value()
+			LowAmmoText._data.threshold_low_ammo_total_from_clip = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_percent = function(
+		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total = function(
 			_self,
 			item
 		)
-			LowAmmoText._data.threshold_low_ammo_total_percent = item:value()
+			LowAmmoText._data.threshold_low_ammo_total = item:value()
 		end
 
 		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_start = function(

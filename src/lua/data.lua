@@ -20,19 +20,6 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 		__index = function(t, k)
 			local m = {}
 
-			function m.threshold_low_ammo_clip_percent()
-				return rawget(t, "threshold_low_ammo_clip") * 100
-			end
-
-			---@deprecated
-			function m.threshold_low_ammo_total_from_clip_percent()
-				return rawget(t, "threshold_low_ammo_total_from_clip") * 100
-			end
-
-			function m.threshold_low_ammo_total_percent()
-				return rawget(t, "threshold_low_ammo_total") * 100
-			end
-
 			function m.text_fade_duration_millis()
 				return rawget(t, "text_fade_duration_secs") * 1000
 			end
@@ -49,19 +36,6 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 
 		__newindex = function(t, k, v)
 			local m = {}
-
-			function m.threshold_low_ammo_clip_percent()
-				return rawset(t, "threshold_low_ammo_clip", v / 100)
-			end
-
-			---@deprecated
-			function m.threshold_low_ammo_total_from_clip_percent()
-				return rawset(t, "threshold_low_ammo_total_from_clip", v / 100)
-			end
-
-			function m.threshold_low_ammo_total_percent()
-				return rawset(t, "threshold_low_ammo_total", v / 100)
-			end
 
 			function m.text_fade_duration_millis()
 				return rawset(t, "text_fade_duration_secs", v / 1000)
