@@ -67,7 +67,7 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 
 		local h, s, v = rgb_to_hsv(color.r, color.g, color.b)
 		v = math.lerp(
-			LowAmmoText._pulse_text_animation_start,
+			LowAmmoText._data.pulse_text_animation_start,
 			1.0,
 			(math.sin(t * 400 * LowAmmoText._data.pulse_text_animation_speed_mul) + 1) / 2
 		)
