@@ -53,3 +53,19 @@ function LowAmmoText.tbl.on_access_post(t, on_get, on_set)
 	setmetatable(proxy, mt)
 	return proxy
 end
+
+function LowAmmoText.tbl.deep_clone(o)
+	if type(o) ~= "table" then
+		return o
+	end
+
+	local res = {}
+
+	for k, v in pairs(o) do
+		res[LowAmmoText.tbl.deep_clone(k)] = LowAmmoText.tbl.deep_clone(v)
+	end
+
+	setmetatable(res, getmetatable(o))
+
+	return res
+end
