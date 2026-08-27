@@ -35,9 +35,19 @@
 ---@field private _s string
 ---@field private _text RenderedTextComponent
 ---@field private _text_configuration TextConfiguration
+---@field private _text_animators TextAnimatorsMap
 ---@field private _shadow RenderedTextComponent
 ---@field private _text_shadow_configuration TextConfiguration|nil
+---@field private _shadow_animators TextAnimatorsMap
 ---@field private _visible boolean
+
+---@alias TextAnimatorsMap { [string]: TextAnimator }
+
+---@class (exact) TextAnimator
+---@field fn TextAnimatorFn
+---@field active boolean
+
+---@alias TextAnimatorFn fun(o: RenderedTextComponent)
 
 ---@alias RenderedTextComponent any
 
@@ -191,6 +201,38 @@ function LowAmmoText.RenderedText:hide(fade_out_duration_secs)
 			o:set_alpha((1 - p) * t._text_configuration.alpha)
 		end)
 	end)
+end
+
+---@param k string
+---@param animator TextAnimatorFn
+function LowAmmoText.RenderedText:add_text_animator(k, animator)
+	local addition = {
+		active = true,
+		animator = animator,
+	}
+	self._text_animators[k] = addition
+
+	local t = self
+	self._text:animate(function(o)
+		local active = true
+
+		while active do
+			animator(o)
+
+			active = (t._text_animators[k] and t._text_animators[k].active) or false
+			coroutine.yield()
+		end
+	end)
+end
+
+---@param k string
+function LowAmmoText.RenderedText:stop_text_animator(k)
+	local animator = self._text_animators[k]
+	if not animator then
+		return
+	end
+
+	animator.active = false
 end
 
 ---@param val number
