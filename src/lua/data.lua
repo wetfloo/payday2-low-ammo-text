@@ -20,21 +20,17 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 		__index = function(t, k)
 			local m = {}
 
-			local function percent(val)
-				return val * 100
-			end
-
 			function m.threshold_low_ammo_clip_percent()
-				return percent(rawget(t, "threshold_low_ammo_clip"))
+				return rawget(t, "threshold_low_ammo_clip") * 100
 			end
 
 			---@deprecated
 			function m.threshold_low_ammo_total_from_clip_percent()
-				return percent(rawget(t, "threshold_low_ammo_total_from_clip"))
+				return rawget(t, "threshold_low_ammo_total_from_clip") * 100
 			end
 
 			function m.threshold_low_ammo_total_percent()
-				return percent(rawget(t, "threshold_low_ammo_total"))
+				return rawget(t, "threshold_low_ammo_total") * 100
 			end
 
 			function m.text_fade_duration_millis()
