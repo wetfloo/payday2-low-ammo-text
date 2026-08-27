@@ -6,6 +6,10 @@ LowAmmoText._data = LowAmmoText._data
 		text_offset_x = 0,
 		text_offset_y = 20,
 
+		pulse_text_animation_start = 0.6,
+		pulse_text_animation_end = 1.0,
+		pulse_text_animation_speed_mul = 1.0,
+
 		threshold_low_ammo_clip = 0.25,
 		threshold_low_ammo_total = 0.25,
 		---@deprecated
