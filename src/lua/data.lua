@@ -13,8 +13,6 @@ LowAmmoText._default_data = LowAmmoText._default_data
 
 		threshold_low_ammo_clip = 0.25,
 		threshold_low_ammo_total = 0.25,
-		---@deprecated
-		threshold_low_ammo_total_from_clip = 0.5,
 	}
 
 LowAmmoText._data = LowAmmoText._data or deep_clone(LowAmmoText._default_data)

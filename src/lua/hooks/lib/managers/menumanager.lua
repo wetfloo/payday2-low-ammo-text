@@ -65,14 +65,6 @@ Hooks:Add(
 			LowAmmoText._data.threshold_low_ammo_clip = item:value()
 		end
 
-		---@deprecated
-		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total_from_clip = function(
-			_self,
-			item
-		)
-			LowAmmoText._data.threshold_low_ammo_total_from_clip = item:value()
-		end
-
 		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total = function(
 			_self,
 			item
