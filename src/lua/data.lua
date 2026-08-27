@@ -35,6 +35,8 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 			if result and type(result) == "function" then
 				return result()
 			end
+
+			return result
 		end,
 
 		__newindex = function(t, k, v)
