@@ -115,4 +115,18 @@ function LowAmmoText.AmmoStateManager:_on_state_value_update()
 	self._rendered_text:set_s(managers.localization:text(preset.s_id))
 	self._rendered_text:set_text_color(preset.color)
 	self._rendered_text:show(LowAmmoText._data.text_fade_duration_secs)
+
+	-- TODO: don't break into private variables
+	self._rendered_text._text:animate(function(o)
+		while true do
+			local r, g, b = o:color()
+			local h, s, v = rgb_to_hsv(r, g, b)
+			v = math.lerp(0.5, 1.0, math.sin(Application:time()))
+
+			r, g, b = hsv_to_rgb(h, s, v)
+			o:set_text_color(r, g, b)
+
+			coroutine.yield()
+		end
+	end)
 end
