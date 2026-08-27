@@ -56,7 +56,7 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 
 	self._rendered_text = rendered_text
 
-	self._rendered_text:add_text_animator("ammo_state_manager_text_animator", function (o)
+	self._rendered_text:add_text_animator("ammo_state_manager_text_animator", function(o)
 		local t = Application:time()
 		local t_mul_base = 100
 		-- TODO: make this parameter configurable by the user
