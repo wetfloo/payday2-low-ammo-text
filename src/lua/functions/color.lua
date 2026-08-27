@@ -58,3 +58,27 @@ function LowAmmoText.color.rgb_to_hsv(r, g, b, a)
 	a = a or 1.0
 	return h, s, v, a
 end
+
+--- Changes the internal representation of Diesel engine's `Color` from RGB to HSV.
+--- Does **NOT** perform any bounds checks,
+--- `Color` values must be normalized to `0..=1` before passing them here.
+---
+---@param color Color
+---@return Color color input color
+function LowAmmoText.color.drgb_to_dhsv_inplace(color)
+	local r, g, b = color.r, color.g, color.b
+	color.r, color.g, color.b = LowAmmoText.color.rgb_to_hsv(r, g, b)
+	return color
+end
+
+--- Changes the internal representation of Diesel engine's `Color` from HSV to RGB.
+--- Does **NOT** perform any bounds checks,
+--- `Color` values must be normalized to `0..=1` before passing them here.
+---
+---@param color Color
+---@return Color color input color
+function LowAmmoText.color.dhsv_to_drgb_inplace(color)
+	local h, s, v = color.r, color.g, color.b
+	color.r, color.g, color.b = LowAmmoText.color.hsv_to_rgb(h, s, v)
+	return color
+end
