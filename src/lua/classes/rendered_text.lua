@@ -48,7 +48,7 @@
 ---@field fn TextAnimatorFn
 ---@field active boolean
 
----@alias TextAnimatorFn fun(o: RenderedTextComponent)
+---@alias TextAnimatorFn fun(o: RenderedTextComponent): boolean|nil
 
 ---@alias RenderedTextComponent any
 
@@ -222,7 +222,10 @@ function LowAmmoText.RenderedText:add_text_animator(k, animator)
 		local active = true
 
 		while active do
-			animator(o)
+			local needs_realign = animator(o) or false
+			if needs_realign then
+				t._text:_realign()
+			end
 
 			active = (t._text_animators[k] and t._text_animators[k].active) or false
 			coroutine.yield()
@@ -254,7 +257,10 @@ function LowAmmoText.RenderedText:add_shadow_animator(k, animator)
 		local active = true
 
 		while active do
-			animator(o)
+			local needs_realign = animator(o) or false
+			if needs_realign then
+				t._shadow:_realign()
+			end
 
 			active = (t._shadow_animators[k] and t._shadow_animators[k].active) or false
 			coroutine.yield()
