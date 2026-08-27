@@ -57,6 +57,10 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 	self._rendered_text = rendered_text
 
 	self._rendered_text:add_text_animator("ammo_state_manager_text_animator", function(o)
+		if LowAmmoText._data.pulse_text_animation_speed_mul == 0.0 then
+			return
+		end
+
 		local t = Application:time()
 
 		local color = o:color()

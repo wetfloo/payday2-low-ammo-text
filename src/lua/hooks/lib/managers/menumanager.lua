@@ -84,6 +84,32 @@ Hooks:Add(
 			LowAmmoText._data.threshold_low_ammo_total = val
 		end
 
+		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_start = function(
+			_self,
+			item
+		)
+			local val = item:value()
+			LowAmmoText._data.pulse_text_animation_start =
+				math.min(val, LowAmmoText._data.pulse_text_animation_end)
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_end = function(
+			_self,
+			item
+		)
+			local val = item:value()
+			LowAmmoText._data.pulse_text_animation_end =
+				math.max(val, LowAmmoText._data.pulse_text_animation_start)
+		end
+
+		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul = function(
+			_self,
+			item
+		)
+			local val = item:value()
+			LowAmmoText._data.pulse_text_animation_speed_mul = val
+		end
+
 		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)
 			LowAmmoText:save_configuration()
 		end

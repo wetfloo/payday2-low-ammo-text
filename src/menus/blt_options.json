@@ -88,6 +88,42 @@
 			"step": 1,
 			"show_value": true,
 			"value": "threshold_low_ammo_total_percent"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_start",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_start",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_start__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_start__desc",
+			"min": 0,
+			"max": 1.0,
+			"step": 0.01,
+			"show_value": true,
+			"value": "pulse_text_animation_start"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_end",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_end",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_end__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_end__desc",
+			"min": 0,
+			"max": 1.0,
+			"step": 0.01,
+			"show_value": true,
+			"value": "pulse_text_animation_end"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_speed_mul",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_speed_mul",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
+			"min": 0,
+			"max": 64,
+			"step": 0.1,
+			"show_value": true,
+			"value": "pulse_text_animation_speed_mul"
 		}
 	]
 }
