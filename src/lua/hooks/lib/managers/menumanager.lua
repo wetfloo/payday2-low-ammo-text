@@ -11,7 +11,7 @@ Hooks:Add(
 		)
 
 		-- Add our own callbacks to handle menu value changes
-		MenuCallbackHandler.low_ammo_text__menu_callback__text_font_size = function(_self, item)
+		function MenuCallbackHandler.low_ammo_text__menu_callback__text_font_size(_self, item)
 			local val = item:value()
 
 			LowAmmoText._data.text_font_size = val
@@ -21,7 +21,7 @@ Hooks:Add(
 			end
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_x = function(_self, item)
+		function MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_x(_self, item)
 			local val = item:value()
 
 			LowAmmoText._data.text_offset_x = val
@@ -31,7 +31,7 @@ Hooks:Add(
 			end
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_y = function(_self, item)
+		function MenuCallbackHandler.low_ammo_text__menu_callback__text_offset_y(_self, item)
 			local val = item:value()
 
 			LowAmmoText._data.text_offset_y = val
@@ -41,7 +41,7 @@ Hooks:Add(
 			end
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__text_alpha = function(_self, item)
+		function MenuCallbackHandler.low_ammo_text__menu_callback__text_alpha(_self, item)
 			local val = item:value()
 
 			LowAmmoText._data.text_alpha = val
@@ -51,42 +51,42 @@ Hooks:Add(
 			end
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__text_fade_duration_millis = function(
+		function MenuCallbackHandler.low_ammo_text__menu_callback__text_fade_duration_millis(
 			_self,
 			item
 		)
 			LowAmmoText._data.text_fade_duration_millis = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_clip = function(
+		function MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_clip(
 			_self,
 			item
 		)
 			LowAmmoText._data.threshold_low_ammo_clip = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total = function(
+		function MenuCallbackHandler.low_ammo_text__menu_callback__threshold_low_ammo_total(
 			_self,
 			item
 		)
 			LowAmmoText._data.threshold_low_ammo_total = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_start = function(
+		function MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_start(
 			_self,
 			item
 		)
 			LowAmmoText._data.pulse_text_animation_start = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log = function(
+		function MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log(
 			_self,
 			item
 		)
 			LowAmmoText._data.pulse_text_animation_speed_mul_log = item:value()
 		end
 
-		MenuCallbackHandler.low_ammo_text__menu_callback__closed = function(_self)
+		function MenuCallbackHandler.low_ammo_text__menu_callback__closed(_self)
 			LowAmmoText:save_configuration()
 		end
 	end
