@@ -29,6 +29,7 @@
 ---@field set_alpha fun(self: LowAmmoText.RenderedText, val: number)
 ---@field show fun(self: LowAmmoText.RenderedText, fade_in_duration_secs: number)
 ---@field hide fun(self: LowAmmoText.RenderedText, fade_out_duration_secs: number)
+---@field add_text_animator fun(self: LowAmmoText.RenderedText, k: string, animator: TextAnimatorFn)
 ---@field set_font_size fun(self: LowAmmoText.RenderedText, val: number)
 ---@field private _hud HUD
 ---@field private _panel HUDPanel
@@ -85,6 +86,10 @@ function LowAmmoText.RenderedText:init(param)
 	self._text = self._panel:text(params_text)
 
 	self:set_alpha(self._text_configuration.alpha)
+
+	self._text_animators = {}
+	self._shadow_animators = {}
+
 	self:_realign()
 end
 
