@@ -18,12 +18,12 @@ end
 LowAmmoText.dofile("functions/tbl")
 -- keep-sorted end
 
+LowAmmoText.dofile("data")
+
 -- keep-sorted start
 LowAmmoText.dofile("classes/ammo_state_manager")
 LowAmmoText.dofile("classes/rendered_text")
 -- keep-sorted end
-
-LowAmmoText.dofile("data")
 
 --- Loads the mod's configuration,
 --- saving it to [LowAmmoText._data] and returning it as a table.
@@ -33,8 +33,13 @@ function LowAmmoText:load_configuration()
 		return
 	end
 
-	local result = json.decode(file:read("*all")) or {}
+	local read = file:read("*all")
 	file:close()
+	if not read then
+		return
+	end
+
+	local result = json.decode(read) or {}
 
 	self.tbl.fill_missing(result, self._data)
 	setmetatable(result, LowAmmoText._mt_data)
