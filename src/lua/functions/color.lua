@@ -27,7 +27,7 @@ function LowAmmoText.color.hsv_to_rgb(h, s, v, a)
 	r, g, b = r + m, g + m, b + m
 	a = a or 1.0
 
-	return r, g, b
+	return r, g, b, a
 end
 
 function LowAmmoText.color.rgb_to_hsv(r, g, b, a)
@@ -56,5 +56,5 @@ function LowAmmoText.color.rgb_to_hsv(r, g, b, a)
 	-- Normalize & return.
 	h = h / 360
 	a = a or 1.0
-	return h, s, v
+	return h, s, v, a
 end
