@@ -240,6 +240,38 @@ function LowAmmoText.RenderedText:stop_text_animator(k)
 	animator.active = false
 end
 
+---@param k string
+---@param animator TextAnimatorFn
+function LowAmmoText.RenderedText:add_shadow_animator(k, animator)
+	local addition = {
+		active = true,
+		animator = animator,
+	}
+	self._shadow_animators[k] = addition
+
+	local t = self
+	self._shadow:animate(function(o)
+		local active = true
+
+		while active do
+			animator(o)
+
+			active = (t._shadow_animators[k] and t._shadow_animators[k].active) or false
+			coroutine.yield()
+		end
+	end)
+end
+
+---@param k string
+function LowAmmoText.RenderedText:stop_shadow_animator(k)
+	local animator = self._shadow_animators[k]
+	if not animator then
+		return
+	end
+
+	animator.active = false
+end
+
 ---@param val number
 function LowAmmoText.RenderedText:set_font_size(val)
 	self._text_configuration.font_size = val
