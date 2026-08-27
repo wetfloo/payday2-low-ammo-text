@@ -29,6 +29,7 @@
 ---@field set_alpha fun(self: LowAmmoText.RenderedText, val: number)
 ---@field show fun(self: LowAmmoText.RenderedText, fade_in_duration_secs: number)
 ---@field hide fun(self: LowAmmoText.RenderedText, fade_out_duration_secs: number)
+---@field hide fun(self: LowAmmoText.RenderedText): boolean
 ---@field add_text_animator fun(self: LowAmmoText.RenderedText, k: string, animator: TextAnimatorFn)
 ---@field set_font_size fun(self: LowAmmoText.RenderedText, val: number)
 ---@field private _hud HUD
@@ -206,6 +207,11 @@ function LowAmmoText.RenderedText:hide(fade_out_duration_secs)
 			o:set_alpha((1 - p) * t._text_configuration.alpha)
 		end)
 	end)
+end
+
+---@return boolean
+function LowAmmoText.RenderedText:visible()
+	return self._visible
 end
 
 ---@param k string

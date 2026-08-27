@@ -12,6 +12,12 @@
 ---@field update_state_values fun(self: LowAmmoText.AmmoStateManager, state_values: AmmoStateValues)
 ---@field state_values AmmoStateValues
 ---@field private _state_values AmmoStateValues
+---@field private _preset AmmoStatePreset|nil
+
+---@class AmmoStatePreset
+---@field k string
+---@field s_id string
+---@field color Color
 
 -- We depend on this, so better init it just in case.
 LowAmmoText.dofile("classes/rendered_text")
@@ -56,23 +62,29 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 
 	self._rendered_text = rendered_text
 
+	local t = self
 	self._rendered_text:add_text_animator("ammo_state_manager_text_animator", function(o)
-		if LowAmmoText._data.pulse_text_animation_speed_mul == 0.0 then
+		local preset_color = t._preset and t._preset.color
+		if not preset_color then
 			return
 		end
 
-		local t = Application:time()
+		if LowAmmoText._data.pulse_text_animation_speed_mul == 0.0 then
+			o:set_color(preset_color)
+			return
+		end
+
+		local time = Application:time()
+
 		local mul = math.lerp(
 			LowAmmoText._data.pulse_text_animation_start,
 			1.0,
-			(math.sin(t * 400 * LowAmmoText._data.pulse_text_animation_speed_mul) + 1) / 2
+			(math.sin(time * 400 * LowAmmoText._data.pulse_text_animation_speed_mul) + 1) / 2
 		)
 
-		local color = o:color()
-		local h, s, v = rgb_to_hsv(color.r, color.g, color.b)
-		v = v * mul
-
-		local r, g, b = hsv_to_rgb(h, s, v)
+		local r, g, b = preset_color.r, preset_color.g, preset_color.b
+		local h, s, v = rgb_to_hsv(r, g, b)
+		r, g, b = hsv_to_rgb(h, s, v * mul)
 
 		o:set_color(Color(r, g, b))
 	end)
@@ -127,6 +139,8 @@ function LowAmmoText.AmmoStateManager:_on_state_value_update()
 			break
 		end
 	end
+
+	self._preset = preset
 
 	if not preset then
 		self._rendered_text:hide(LowAmmoText._data.text_fade_duration_secs)
