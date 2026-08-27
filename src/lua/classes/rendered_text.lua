@@ -228,12 +228,15 @@ function LowAmmoText.RenderedText:add_text_animator(k, animator)
 		local active = true
 
 		while active do
-			local needs_realign = animator(o) or false
-			if needs_realign then
-				t._text:_realign()
+			if t._visible then
+				local needs_realign = animator(o) or false
+				if needs_realign then
+					t._text:_realign()
+				end
+
+				active = (t._text_animators[k] and t._text_animators[k].active) or false
 			end
 
-			active = (t._text_animators[k] and t._text_animators[k].active) or false
 			coroutine.yield()
 		end
 	end)
