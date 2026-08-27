@@ -2,20 +2,18 @@ local pulse_text_animation_speed_exp = 2
 
 LowAmmoText._default_data = LowAmmoText._default_data
 	or {
-		text_font_size = 14,
+		text_font_size = 16,
 		text_alpha = 1.0,
 		text_fade_duration_secs = 0.25,
 		text_offset_x = 0,
 		text_offset_y = 20,
 
-		pulse_text_animation_start = 0.65,
-		pulse_text_animation_speed_mul = 7.65175,
-
 		threshold_low_ammo_clip = 0.25,
 		threshold_low_ammo_total = 0.25,
-	}
 
-LowAmmoText._data = LowAmmoText._data or deep_clone(LowAmmoText._default_data)
+		pulse_text_animation_start = 0.65,
+		pulse_text_animation_speed_mul = 7.65175,
+	}
 
 LowAmmoText._mt_data = LowAmmoText._mt_data
 	or {
@@ -60,5 +58,6 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 			end
 		end,
 	}
+setmetatable(LowAmmoText._default_data, LowAmmoText._mt_data)
 
-setmetatable(LowAmmoText._data, LowAmmoText._mt_data)
+LowAmmoText._data = LowAmmoText._data or deep_clone(LowAmmoText._default_data)
