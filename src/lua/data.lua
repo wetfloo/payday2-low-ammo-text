@@ -1,4 +1,6 @@
-LowAmmoText._data = LowAmmoText._data
+local pulse_text_animation_speed_exp = 2
+
+LowAmmoText._default_data = LowAmmoText._default_data
 	or {
 		text_font_size = 14,
 		text_alpha = 1.0,
@@ -6,14 +8,16 @@ LowAmmoText._data = LowAmmoText._data
 		text_offset_x = 0,
 		text_offset_y = 20,
 
-		pulse_text_animation_start = 0.6,
-		pulse_text_animation_speed_mul = 1.0,
+		pulse_text_animation_start = 0.65,
+		pulse_text_animation_speed_mul = 7.65175,
 
 		threshold_low_ammo_clip = 0.25,
 		threshold_low_ammo_total = 0.25,
 		---@deprecated
 		threshold_low_ammo_total_from_clip = 0.5,
 	}
+
+LowAmmoText._data = LowAmmoText._data or deep_clone(LowAmmoText._default_data)
 
 LowAmmoText._mt_data = LowAmmoText._mt_data
 	or {
@@ -25,7 +29,10 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 			end
 
 			function m.pulse_text_animation_speed_mul_log()
-				return math.pow(10, rawget(t, "pulse_text_animation_speed_mul"))
+				return math.pow(
+					pulse_text_animation_speed_exp,
+					rawget(t, "pulse_text_animation_speed_mul")
+				)
 			end
 
 			local result = m[k]
@@ -42,7 +49,11 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 			end
 
 			function m.pulse_text_animation_speed_mul_log()
-				return rawset(t, "pulse_text_animation_speed_mul", math.log10(v))
+				return rawset(
+					t,
+					"pulse_text_animation_speed_mul",
+					math.log(v, pulse_text_animation_speed_exp)
+				)
 			end
 
 			local result = m[k]

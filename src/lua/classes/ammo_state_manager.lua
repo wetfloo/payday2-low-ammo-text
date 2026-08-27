@@ -75,11 +75,13 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 		end
 
 		local time = Application:time()
+		local base_time_mul = 50
 
 		local mul = math.lerp(
 			LowAmmoText._data.pulse_text_animation_start,
 			1.0,
-			(math.sin(time * 400 * LowAmmoText._data.pulse_text_animation_speed_mul) + 1) / 2
+			(math.sin(time * base_time_mul * LowAmmoText._data.pulse_text_animation_speed_mul) + 1)
+				/ 2
 		)
 
 		local r, g, b = preset_color.r, preset_color.g, preset_color.b

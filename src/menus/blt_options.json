@@ -108,7 +108,7 @@
 			"title": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__title",
 			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
 			"min": 0,
-			"max": 100,
+			"max": 400,
 			"step": 0.5,
 			"show_value": false,
 			"value": "pulse_text_animation_speed_mul_log"
