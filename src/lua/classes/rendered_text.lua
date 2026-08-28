@@ -78,7 +78,7 @@ function LowAmmoText.RenderedText:init(param)
 	}
 
 	if self._text_shadow_configuration then
-		local params_shadow = clone(params_text)
+		local params_shadow = LowAmmoText.tbl.deep_clone(params_text)
 		params_shadow.color = param.text_shadow_configuration.color
 		-- Render shadow first, otherwise we get overlap.
 		self._shadow = self._panel:text(params_shadow)
