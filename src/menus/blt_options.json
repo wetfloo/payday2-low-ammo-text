@@ -111,7 +111,7 @@
 		{
 			"type": "multiple_choice",
 			"id": "low_ammo_text__menu_component__pulse_text_ease_function",
-			"callback": "low_ammo_text__menu_callback__pulse_text_ease_function_menu_key",
+			"callback": "low_ammo_text__menu_callback__pulse_text_ease_function_key",
 			"title": "low_ammo_text__menu_component__pulse_text_ease_function__title",
 			"description": "low_ammo_text__menu_component__pulse_text_ease_function__desc",
 			"items": [
@@ -147,8 +147,41 @@
 				"low_ammo_text__item__pulse_text_ease_function__out_bounce",
 				"low_ammo_text__item__pulse_text_ease_function__in_out_bounce"
 			],
+			"item_values": [
+				"linear",
+				"in_sine",
+				"out_sine",
+				"in_out_sine",
+				"in_quad",
+				"out_quad",
+				"in_out_quad",
+				"in_cubic",
+				"out_cubic",
+				"in_out_cubic",
+				"in_quart",
+				"out_quart",
+				"in_out_quart",
+				"in_quint",
+				"out_quint",
+				"in_out_quint",
+				"in_expo",
+				"out_expo",
+				"in_out_expo",
+				"in_circ",
+				"out_circ",
+				"in_out_circ",
+				"in_back",
+				"out_back",
+				"in_out_back",
+				"in_elastic",
+				"out_elastic",
+				"in_out_elastic",
+				"in_bounce",
+				"out_bounce",
+				"in_out_bounce"
+			],
 			"localized_items": true,
-			"value": "pulse_text_ease_function_key_menu"
+			"value": "pulse_text_ease_function_key"
 		},
 		{
 			"type": "divider",

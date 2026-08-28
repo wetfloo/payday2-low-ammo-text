@@ -173,11 +173,11 @@ Hooks:Add(
 			LowAmmoText._data.pulse_text_animation_start = item:value()
 		end
 
-		function MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_ease_function_menu_key(
+		function MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_ease_function_key(
 			_self,
 			item
 		)
-			LowAmmoText._data.pulse_text_ease_function_menu_key_menu = item:value()
+			LowAmmoText._data.pulse_text_ease_function_key = item:value()
 		end
 
 		function MenuCallbackHandler.low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log(

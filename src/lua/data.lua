@@ -1,5 +1,4 @@
 local pulse_text_animation_speed_exp = 2
-local ease_function_prefix = "low_ammo_text__item__pulse_text_ease_function__"
 
 LowAmmoText._default_data = LowAmmoText._default_data
 	or {
@@ -13,7 +12,7 @@ LowAmmoText._default_data = LowAmmoText._default_data
 		threshold_low_ammo_total = 0.25,
 
 		pulse_text_animation_start = 0.65,
-		pulse_text_animation_function_key = "linear",
+		pulse_text_ease_function_key = "linear",
 		pulse_text_animation_speed_mul = 7.65175,
 
 		state_enabled_no_ammo = true,
@@ -40,12 +39,8 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 				)
 			end
 
-			function m.pulse_text_ease_function_key_menu()
-				return ease_function_prefix .. rawget(t, "pulse_text_animation_function_key")
-			end
-
 			function m.pulse_text_ease_function()
-				return LowAmmoText.ease[rawget(t, "pulse_text_animation_function_key")]
+				return LowAmmoText.ease[rawget(t, "pulse_text_ease_function_key")]
 			end
 
 			local result = m[k]
@@ -68,14 +63,6 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 					t,
 					"pulse_text_animation_speed_mul",
 					math.log(v, pulse_text_animation_speed_exp)
-				)
-			end
-
-			function m.pulse_text_ease_function_key_menu()
-				return rawset(
-					t,
-					"pulse_text_ease_function_key",
-					v:gsub("^" .. ease_function_prefix, "", 1)
 				)
 			end
 

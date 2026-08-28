@@ -79,7 +79,7 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 		local base_time_mul = 50
 		local product = time * base_time_mul * LowAmmoText._data.pulse_text_animation_speed_mul
 		local sine_norm = (math.sin(product) + 1) / 2
-		local eased = LowAmmoText._data.pulse_text_animation_function(sine_norm)
+		local eased = LowAmmoText._data.pulse_text_ease_function(sine_norm)
 		local mul = math.lerp(LowAmmoText._data.pulse_text_animation_start, 1.0, eased)
 
 		local r, g, b = preset_color.r, preset_color.g, preset_color.b
