@@ -28,6 +28,7 @@ local function get_or_init_ammo_state_manager()
 				x = LowAmmoText._data.text_offset_x,
 				y = LowAmmoText._data.text_offset_y,
 			},
+			rot_deg = LowAmmoText._data.text_rot_deg,
 			font_size = LowAmmoText._data.text_font_size,
 			font = tweak_data.menu.pd2_large_font,
 			alpha = LowAmmoText._data.text_alpha,

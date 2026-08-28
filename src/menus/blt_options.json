@@ -24,8 +24,8 @@
 			"description": "low_ammo_text__menu_component__text_alpha__desc",
 			"min": 0.0,
 			"max": 1.0,
-			"step": 0.01,
-			"show_value": true,
+			"step": 0.05,
+			"show_value": false,
 			"value": "text_alpha"
 		},
 		{
@@ -34,10 +34,11 @@
 			"callback": "low_ammo_text__menu_callback__text_font_size",
 			"title": "low_ammo_text__menu_component__text_font_size__title",
 			"description": "low_ammo_text__menu_component__text_font_size__desc",
-			"min": 1.0,
-			"max": 48.0,
-			"step": 0.5,
+			"min": 1,
+			"max": 48,
+			"step": 1,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_font_size"
 		},
 		{
@@ -50,10 +51,11 @@
 			"callback": "low_ammo_text__menu_callback__text_offset_x",
 			"title": "low_ammo_text__menu_component__text_offset_x__title",
 			"description": "low_ammo_text__menu_component__text_offset_x__desc",
-			"min": -1000.0,
-			"max": 1000.0,
-			"step": 0.5,
+			"min": -1000,
+			"max": 1000,
+			"step": 2,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_offset_x"
 		},
 		{
@@ -62,11 +64,25 @@
 			"callback": "low_ammo_text__menu_callback__text_offset_y",
 			"title": "low_ammo_text__menu_component__text_offset_y__title",
 			"description": "low_ammo_text__menu_component__text_offset_y__desc",
-			"min": -1000.0,
-			"max": 1000.0,
-			"step": 0.5,
+			"min": -1000,
+			"max": 1000,
+			"step": 2,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_offset_y"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__text_rot_deg",
+			"callback": "low_ammo_text__menu_callback__text_rot_deg",
+			"title": "low_ammo_text__menu_component__text_rot_deg__title",
+			"description": "low_ammo_text__menu_component__text_rot_deg__desc",
+			"min": 0,
+			"max": 360,
+			"step": 7.5,
+			"show_value": true,
+			"display_precision": 1,
+			"value": "text_rot_deg"
 		},
 		{
 			"type": "divider",
@@ -80,8 +96,9 @@
 			"description": "low_ammo_text__menu_component__text_fade_duration__desc",
 			"min": 0,
 			"max": 3000,
-			"step": 10,
+			"step": 20,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_fade_duration_millis"
 		},
 		{
@@ -92,7 +109,7 @@
 			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
 			"min": 0,
 			"max": 400,
-			"step": 0.5,
+			"step": 20,
 			"show_value": false,
 			"value": "pulse_text_animation_speed_mul_log"
 		},
@@ -104,8 +121,8 @@
 			"description": "low_ammo_text__menu_component__pulse_text_animation_start__desc",
 			"min": 0,
 			"max": 1.0,
-			"step": 0.01,
-			"show_value": true,
+			"step": 0.05,
+			"show_value": false,
 			"value": "pulse_text_animation_start"
 		},
 		{
@@ -177,7 +194,7 @@
 			"description": "low_ammo_text__menu_component__threshold_low_ammo_clip__desc",
 			"min": 0,
 			"max": 1.0,
-			"step": 0.01,
+			"step": 0.05,
 			"show_value": false,
 			"value": "threshold_low_ammo_clip"
 		},
@@ -189,7 +206,7 @@
 			"description": "low_ammo_text__menu_component__threshold_low_ammo_total__desc",
 			"min": 0,
 			"max": 1.0,
-			"step": 0.01,
+			"step": 0.05,
 			"show_value": false,
 			"value": "threshold_low_ammo_total"
 		},
@@ -203,8 +220,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_no_ammo__title",
 			"description": "low_ammo_text__menu_component__toggle_state_no_ammo__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_no_ammo",
-			"value": "state_enabled_no_ammo",
-			"default_value": true
+			"value": "state_enabled_no_ammo"
 		},
 		{
 			"type": "toggle",
@@ -212,8 +228,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_low_total_ammo__title",
 			"description": "low_ammo_text__menu_component__toggle_state_low_total_ammo__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_low_total_ammo",
-			"value": "state_enabled_low_total_ammo",
-			"default_value": true
+			"value": "state_enabled_low_total_ammo"
 		},
 		{
 			"type": "toggle",
@@ -221,8 +236,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_clip_empty__title",
 			"description": "low_ammo_text__menu_component__toggle_state_clip_empty__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_clip_empty",
-			"value": "state_enabled_clip_empty",
-			"default_value": true
+			"value": "state_enabled_clip_empty"
 		},
 		{
 			"type": "toggle",
@@ -230,8 +244,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_low_ammo_clip__title",
 			"description": "low_ammo_text__menu_component__toggle_state_low_ammo_clip__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_low_ammo_clip",
-			"value": "state_enabled_low_ammo_clip",
-			"default_value": true
+			"value": "state_enabled_low_ammo_clip"
 		},
 		{
 			"type": "toggle",
@@ -239,8 +252,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_bulletstorm__title",
 			"description": "low_ammo_text__menu_component__toggle_state_bulletstorm__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_bulletstorm",
-			"value": "state_enabled_bulletstorm",
-			"default_value": true
+			"value": "state_enabled_bulletstorm"
 		},
 		{
 			"type": "toggle",
@@ -248,8 +260,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_swan_song_aced__title",
 			"description": "low_ammo_text__menu_component__toggle_state_swan_song_aced__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_swan_song_aced",
-			"value": "state_enabled_swan_song_aced",
-			"default_value": true
+			"value": "state_enabled_swan_song_aced"
 		}
 	]
 }

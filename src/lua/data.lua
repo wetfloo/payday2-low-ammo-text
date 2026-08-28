@@ -7,6 +7,7 @@ LowAmmoText._default_data = LowAmmoText._default_data
 		text_fade_duration_secs = 0.25,
 		text_offset_x = 0,
 		text_offset_y = 20,
+		text_rot_deg = 0,
 
 		threshold_low_ammo_clip = 0.25,
 		threshold_low_ammo_total = 0.25,

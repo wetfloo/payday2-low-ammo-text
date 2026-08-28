@@ -3,7 +3,7 @@
 	"description": "Shows a text popup when your ammo is low",
 	"author": "inertia",
 	"contact": "frozenyonder@gmail.com",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"blt_version": 2,
 	"priority": 10,
 	"color": "255 150 69",
