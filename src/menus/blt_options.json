@@ -13,6 +13,10 @@
 			"description": "low_ammo_text__menu_component__reset_to_default__desc"
 		},
 		{
+			"type": "divider",
+			"size": 8
+		},
+		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__text_alpha",
 			"callback": "low_ammo_text__menu_callback__text_alpha",
@@ -35,6 +39,10 @@
 			"step": 0.5,
 			"show_value": true,
 			"value": "text_font_size"
+		},
+		{
+			"type": "divider",
+			"size": 8
 		},
 		{
 			"type": "slider",
@@ -61,6 +69,10 @@
 			"value": "text_offset_y"
 		},
 		{
+			"type": "divider",
+			"size": 8
+		},
+		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__text_fade_duration",
 			"callback": "low_ammo_text__menu_callback__text_fade_duration_millis",
@@ -71,6 +83,34 @@
 			"step": 10,
 			"show_value": true,
 			"value": "text_fade_duration_millis"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_speed_mul",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
+			"min": 0,
+			"max": 400,
+			"step": 0.5,
+			"show_value": false,
+			"value": "pulse_text_animation_speed_mul_log"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_start",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_start",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_start__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_start__desc",
+			"min": 0,
+			"max": 1.0,
+			"step": 0.01,
+			"show_value": true,
+			"value": "pulse_text_animation_start"
+		},
+		{
+			"type": "divider",
+			"size": 8
 		},
 		{
 			"type": "slider",
@@ -95,30 +135,6 @@
 			"step": 0.01,
 			"show_value": false,
 			"value": "threshold_low_ammo_total"
-		},
-		{
-			"type": "slider",
-			"id": "low_ammo_text__menu_component__pulse_text_animation_start",
-			"callback": "low_ammo_text__menu_callback__pulse_text_animation_start",
-			"title": "low_ammo_text__menu_component__pulse_text_animation_start__title",
-			"description": "low_ammo_text__menu_component__pulse_text_animation_start__desc",
-			"min": 0,
-			"max": 1.0,
-			"step": 0.01,
-			"show_value": true,
-			"value": "pulse_text_animation_start"
-		},
-		{
-			"type": "slider",
-			"id": "low_ammo_text__menu_component__pulse_text_animation_speed_mul",
-			"callback": "low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log",
-			"title": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__title",
-			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
-			"min": 0,
-			"max": 400,
-			"step": 0.5,
-			"show_value": false,
-			"value": "pulse_text_animation_speed_mul_log"
 		}
 	]
 }
