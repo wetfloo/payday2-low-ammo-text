@@ -6,6 +6,13 @@
 	"back_callback": "low_ammo_text__menu_callback__closed",
 	"items": [
 		{
+			"type": "button",
+			"id": "low_ammo_text__menu_component__reset_to_default",
+			"callback": "low_ammo_text__menu_callback__reset_to_default",
+			"title": "low_ammo_text__menu_component__reset_to_default__title",
+			"description": "low_ammo_text__menu_component__reset_to_default__desc"
+		},
+		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__text_alpha",
 			"callback": "low_ammo_text__menu_callback__text_alpha",
