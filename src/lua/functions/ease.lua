@@ -1,191 +1,191 @@
-function easeInSine(x)
-	return 1 - Math.cos((x * Math.PI) / 2)
+function LowAmmoText.ease.in_sine(x)
+	return 1 - math.cos((x * math.pi) / 2)
 end
 
-function easeOutSine(x)
-	return Math.sin((x * Math.PI) / 2)
+function LowAmmoText.ease.out_sine(x)
+	return math.sin((x * math.pi) / 2)
 end
 
-function easeInOutSine(x)
-	return -(Math.cos(Math.PI * x) - 1) / 2
+function LowAmmoText.ease.in_out_sine(x)
+	return -(math.cos(math.pi * x) - 1) / 2
 end
 
-function easeInQuad(x)
+function LowAmmoText.ease.in_quad(x)
 	return x * x
 end
 
-function easeOutQuad(x)
+function LowAmmoText.ease.out_quad(x)
 	return 1 - (1 - x) * (1 - x)
 end
 
-function easeInOutQuad(x)
+function LowAmmoText.ease.in_out_quad(x)
 	if x < 0.5 then
 		return 2 * x * x
 	else
-		return 1 - Math.pow(-2 * x + 2, 2) / 2
+		return 1 - math.pow(-2 * x + 2, 2) / 2
 	end
 end
 
-function easeInCubic(x)
+function LowAmmoText.ease.in_cubic(x)
 	return x * x * x
 end
 
-function easeOutCubic(x)
-	return 1 - Math.pow(1 - x, 3)
+function LowAmmoText.ease.out_cubic(x)
+	return 1 - math.pow(1 - x, 3)
 end
 
-function easeInOutCubic(x)
+function LowAmmoText.ease.in_out_cubic(x)
 	if x < 0.5 then
 		return 4 * x * x * x
 	else
-		return 1 - Math.pow(-2 * x + 2, 3) / 2
+		return 1 - math.pow(-2 * x + 2, 3) / 2
 	end
 end
 
-function easeInQuart(x)
+function LowAmmoText.ease.in_quart(x)
 	return x * x * x * x
 end
 
-function easeOutQuart(x)
-	return 1 - Math.pow(1 - x, 4)
+function LowAmmoText.ease.out_quart(x)
+	return 1 - math.pow(1 - x, 4)
 end
 
-function easeInOutQuart(x)
+function LowAmmoText.ease.in_out_quart(x)
 	if x < 0.5 then
 		return 8 * x * x * x * x
 	else
-		return 1 - Math.pow(-2 * x + 2, 4) / 2
+		return 1 - math.pow(-2 * x + 2, 4) / 2
 	end
 end
 
-function easeInQuint(x)
+function LowAmmoText.ease.in_quint(x)
 	return x * x * x * x * x
 end
 
-function easeOutQuint(x)
-	return 1 - Math.pow(1 - x, 5)
+function LowAmmoText.ease.out_quint(x)
+	return 1 - math.pow(1 - x, 5)
 end
 
-function easeInOutQuint(x)
+function LowAmmoText.ease.in_out_quint(x)
 	if x < 0.5 then
 		return 16 * x * x * x * x * x
 	else
-		return 1 - Math.pow(-2 * x + 2, 5) / 2
+		return 1 - math.pow(-2 * x + 2, 5) / 2
 	end
 end
 
-function easeInExpo(x)
+function LowAmmoText.ease.in_expo(x)
 	if x == 0 then
 		return 0
 	else
-		return Math.pow(2, 10 * x - 10)
+		return math.pow(2, 10 * x - 10)
 	end
 end
 
-function easeOutExpo(x)
+function LowAmmoText.ease.out_expo(x)
 	if x == 1 then
 		return 1
 	else
-		return 1 - Math.pow(2, -10 * x)
+		return 1 - math.pow(2, -10 * x)
 	end
 end
 
-function easeInOutExpo(x)
+function LowAmmoText.ease.in_out_expo(x)
 	if x == 0 then
 		return 0
 	elseif x == 1 then
 		return 1
 	elseif x < 0.5 then
-		return Math.pow(2, 20 * x - 10) / 2
+		return math.pow(2, 20 * x - 10) / 2
 	else
-		return (2 - Math.pow(2, -20 * x + 10)) / 2
+		return (2 - math.pow(2, -20 * x + 10)) / 2
 	end
 end
 
-function easeInCirc(x)
-	return 1 - Math.sqrt(1 - Math.pow(x, 2))
+function LowAmmoText.ease.in_circ(x)
+	return 1 - math.sqrt(1 - math.pow(x, 2))
 end
 
-function easeOutCirc(x)
-	return Math.sqrt(1 - Math.pow(x - 1, 2))
+function LowAmmoText.ease.out_circ(x)
+	return math.sqrt(1 - math.pow(x - 1, 2))
 end
 
-function easeInOutCirc(x)
+function LowAmmoText.ease.in_out_circ(x)
 	if x < 0.5 then
-		return (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2
+		return (1 - math.sqrt(1 - math.pow(2 * x, 2))) / 2
 	else
-		return (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+		return (math.sqrt(1 - math.pow(-2 * x + 2, 2)) + 1) / 2
 	end
 end
 
-function easeInBack(x)
+function LowAmmoText.ease.in_back(x)
 	local c1 = 1.70158
 	local c3 = c1 + 1
 
 	return c3 * x * x * x - c1 * x * x
 end
 
-function easeOutBack(x)
+function LowAmmoText.ease.out_back(x)
 	local c1 = 1.70158
 	local c3 = c1 + 1
 
-	return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2)
+	return 1 + c3 * math.pow(x - 1, 3) + c1 * math.pow(x - 1, 2)
 end
 
-function easeInOutBack(x)
+function LowAmmoText.ease.in_out_back(x)
 	local c1 = 1.70158
 	local c2 = c1 * 1.525
 
 	if x < 0.5 then
-		return (Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
+		return (math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
 	else
-		return (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2
+		return (math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2
 	end
 end
 
-function easeInElastic(x)
-	local c4 = (2 * Math.PI) / 3
+function LowAmmoText.ease.in_elastic(x)
+	local c4 = (2 * math.pi) / 3
 
 	if x == 0 then
 		return 0
 	elseif x == 1 then
 		return 1
 	else
-		return -Math.pow(2, 10 * x - 10) * Math.sin((x * 10 - 10.75) * c4)
+		return -math.pow(2, 10 * x - 10) * math.sin((x * 10 - 10.75) * c4)
 	end
 end
 
-function easeOutElastic(x)
-	local c4 = (2 * Math.PI) / 3
+function LowAmmoText.ease.out_elastic(x)
+	local c4 = (2 * math.pi) / 3
 
 	if x == 0 then
 		return 0
 	elseif x == 1 then
 		return 1
 	else
-		return Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1
+		return math.pow(2, -10 * x) * math.sin((x * 10 - 0.75) * c4) + 1
 	end
 end
 
-function easeInOutElastic(x)
-	local c5 = (2 * Math.PI) / 4.5
+function LowAmmoText.ease.in_out_elastic(x)
+	local c5 = (2 * math.pi) / 4.5
 
 	if x == 0 then
 		return 0
 	elseif x == 1 then
 		return 1
 	elseif x < 0.5 then
-		return -(Math.pow(2, 20 * x - 10) * Math.sin((20 * x - 11.125) * c5)) / 2
+		return -(math.pow(2, 20 * x - 10) * math.sin((20 * x - 11.125) * c5)) / 2
 	else
-		return (Math.pow(2, -20 * x + 10) * Math.sin((20 * x - 11.125) * c5)) / 2 + 1
+		return (math.pow(2, -20 * x + 10) * math.sin((20 * x - 11.125) * c5)) / 2 + 1
 	end
 end
 
-function easeInBounce(x)
-	return 1 - easeOutBounce(1 - x)
+function LowAmmoText.ease.in_bounce(x)
+	return 1 - LowAmmoText.ease.out_bounce(1 - x)
 end
 
-function easeOutBounce(x)
+function LowAmmoText.ease.out_bounce(x)
 	local n1 = 7.5625
 	local d1 = 2.75
 
@@ -203,10 +203,10 @@ function easeOutBounce(x)
 	end
 end
 
-function easeInOutBounce(x)
+function LowAmmoText.ease.in_out_bounce(x)
 	if x < 0.5 then
-		return (1 - easeOutBounce(1 - 2 * x)) / 2
+		return (1 - LowAmmoText.ease.out_bounce(1 - 2 * x)) / 2
 	else
-		return (1 + easeOutBounce(2 * x - 1)) / 2
+		return (1 + LowAmmoText.ease.out_bounce(2 * x - 1)) / 2
 	end
 end
