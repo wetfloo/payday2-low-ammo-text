@@ -220,8 +220,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_no_ammo__title",
 			"description": "low_ammo_text__menu_component__toggle_state_no_ammo__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_no_ammo",
-			"value": "state_enabled_no_ammo",
-			"default_value": true
+			"value": "state_enabled_no_ammo"
 		},
 		{
 			"type": "toggle",
@@ -229,8 +228,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_low_total_ammo__title",
 			"description": "low_ammo_text__menu_component__toggle_state_low_total_ammo__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_low_total_ammo",
-			"value": "state_enabled_low_total_ammo",
-			"default_value": true
+			"value": "state_enabled_low_total_ammo"
 		},
 		{
 			"type": "toggle",
@@ -238,8 +236,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_clip_empty__title",
 			"description": "low_ammo_text__menu_component__toggle_state_clip_empty__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_clip_empty",
-			"value": "state_enabled_clip_empty",
-			"default_value": true
+			"value": "state_enabled_clip_empty"
 		},
 		{
 			"type": "toggle",
@@ -247,8 +244,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_low_ammo_clip__title",
 			"description": "low_ammo_text__menu_component__toggle_state_low_ammo_clip__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_low_ammo_clip",
-			"value": "state_enabled_low_ammo_clip",
-			"default_value": true
+			"value": "state_enabled_low_ammo_clip"
 		},
 		{
 			"type": "toggle",
@@ -256,8 +252,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_bulletstorm__title",
 			"description": "low_ammo_text__menu_component__toggle_state_bulletstorm__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_bulletstorm",
-			"value": "state_enabled_bulletstorm",
-			"default_value": true
+			"value": "state_enabled_bulletstorm"
 		},
 		{
 			"type": "toggle",
@@ -265,8 +260,7 @@
 			"title": "low_ammo_text__menu_component__toggle_state_swan_song_aced__title",
 			"description": "low_ammo_text__menu_component__toggle_state_swan_song_aced__desc",
 			"callback": "low_ammo_text__menu_callback__toggle_state_swan_song_aced",
-			"value": "state_enabled_swan_song_aced",
-			"default_value": true
+			"value": "state_enabled_swan_song_aced"
 		}
 	]
 }
