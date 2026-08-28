@@ -9,7 +9,6 @@
 ---@class (exact) LowAmmoText.AmmoStateManager
 ---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
 ---@field destroy fun(self: LowAmmoText.AmmoStateManager)
----@field alive fun(self: LowAmmoText.AmmoStateManager): boolean
 ---@field update_state_values fun(self: LowAmmoText.AmmoStateManager, state_values: AmmoStateValues)
 ---@field state_values AmmoStateValues
 ---@field private _state_values AmmoStateValues
