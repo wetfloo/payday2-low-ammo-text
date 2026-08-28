@@ -2,8 +2,9 @@
 ---@field no_ammo? boolean
 ---@field low_total_ammo? boolean
 ---@field clip_empty? boolean
----@field bulletstorm? boolean
 ---@field low_ammo_clip? boolean
+---@field bulletstorm? boolean
+---@field swan_song_aced? boolean
 
 ---@class (exact) LowAmmoText.AmmoStateManager
 ---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
@@ -136,7 +137,15 @@ function LowAmmoText.AmmoStateManager:_on_state_value_update()
 	local preset
 
 	for _, preset_curr in ipairs(presets_sorted) do
-		if self._state_values[preset_curr.k] then
+		local k = preset_curr.k
+		local found = self._state_values[k]
+
+		local enabled = LowAmmoText._data["state_enabled_" .. k]
+		if enabled == nil then
+			enabled = true
+		end
+
+		if found and enabled then
 			preset = preset_curr
 			break
 		end

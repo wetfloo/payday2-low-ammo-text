@@ -180,6 +180,45 @@ Hooks:Add(
 			LowAmmoText._data.pulse_text_animation_speed_mul_log = item:value()
 		end
 
+		function MenuCallbackHandler.low_ammo_text__menu_callback__toggle_state_no_ammo(_self, item)
+			LowAmmoText._data.state_enabled_no_ammo = item:value() == "on"
+		end
+
+		function MenuCallbackHandler.low_ammo_text__menu_callback__toggle_state_low_total_ammo(
+			_self,
+			item
+		)
+			LowAmmoText._data.state_enabled_low_total_ammo = item:value() == "on"
+		end
+
+		function MenuCallbackHandler.low_ammo_text__menu_callback__toggle_state_clip_empty(
+			_self,
+			item
+		)
+			LowAmmoText._data.state_enabled_clip_empty = item:value() == "on"
+		end
+
+		function MenuCallbackHandler.low_ammo_text__menu_callback__toggle_state_low_ammo_clip(
+			_self,
+			item
+		)
+			LowAmmoText._data.state_enabled_low_ammo_clip = item:value() == "on"
+		end
+
+		function MenuCallbackHandler.low_ammo_text__menu_callback__toggle_state_bulletstorm(
+			_self,
+			item
+		)
+			LowAmmoText._data.state_enabled_bulletstorm = item:value() == "on"
+		end
+
+		function MenuCallbackHandler.low_ammo_text__menu_callback__toggle_state_swan_song_aced(
+			_self,
+			item
+		)
+			LowAmmoText._data.state_enabled_swan_song_aced = item:value() == "on"
+		end
+
 		function MenuCallbackHandler.low_ammo_text__menu_callback__closed(_self)
 			LowAmmoText:save_configuration()
 		end

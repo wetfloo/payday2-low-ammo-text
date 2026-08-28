@@ -13,6 +13,13 @@ LowAmmoText._default_data = LowAmmoText._default_data
 
 		pulse_text_animation_start = 0.65,
 		pulse_text_animation_speed_mul = 7.65175,
+
+		state_enabled_no_ammo = true,
+		state_enabled_low_total_ammo = true,
+		state_enabled_clip_empty = true,
+		state_enabled_low_ammo_clip = true,
+		state_enabled_bulletstorm = true,
+		state_enabled_swan_song_aced = true,
 	}
 
 LowAmmoText._mt_data = LowAmmoText._mt_data
