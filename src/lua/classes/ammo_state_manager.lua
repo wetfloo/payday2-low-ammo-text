@@ -69,7 +69,7 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 			return
 		end
 
-		if LowAmmoText._data.pulse_text_animation_speed_mul == 0.0 then
+		if LowAmmoText._data.pulse_text_animation_speed_mul <= 1.0 then
 			o:set_color(preset_color)
 			return
 		end
