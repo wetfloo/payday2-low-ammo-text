@@ -41,7 +41,7 @@ function LowAmmoText:load_configuration()
 
 	local result = json.decode(read) or {}
 
-	self.tbl.fill_missing(result, self._data)
+	LowAmmoText.tbl.fill_missing(result, self._data)
 	setmetatable(result, LowAmmoText._mt_data)
 	self._data = result
 
