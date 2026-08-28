@@ -15,4 +15,4 @@ It supports [SuperBLT](https://superblt.znix.xyz/)'s [auto-updates](https://supe
 ## Planned features
 
  - [ ] Implement color customization. Consider using [ColorPicker](https://github.com/offyerrocker/PD2-ColorPicker)
- - [ ] Implement dynamically changing colors depending on state. For example, make `RELOAD` text more red when running out of ammo in a magazine.
+ - [x] Implement dynamically changing colors depending on state. For example, make `RELOAD` text more red when running out of ammo in a magazine.
