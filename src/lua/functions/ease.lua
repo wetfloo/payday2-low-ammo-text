@@ -1,3 +1,5 @@
+LowAmmoText.ease = LowAmmoText.ease or {}
+
 function LowAmmoText.ease.linear(x)
 	return x
 end
