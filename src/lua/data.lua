@@ -12,6 +12,7 @@ LowAmmoText._default_data = LowAmmoText._default_data
 		threshold_low_ammo_total = 0.25,
 
 		pulse_text_animation_start = 0.65,
+		pulse_text_ease_function_key = "linear",
 		pulse_text_animation_speed_mul = 7.65175,
 
 		state_enabled_no_ammo = true,
@@ -36,6 +37,10 @@ LowAmmoText._mt_data = LowAmmoText._mt_data
 					pulse_text_animation_speed_exp,
 					rawget(t, "pulse_text_animation_speed_mul")
 				)
+			end
+
+			function m.pulse_text_ease_function()
+				return LowAmmoText.ease[rawget(t, "pulse_text_ease_function_key")]
 			end
 
 			local result = m[k]

@@ -15,6 +15,7 @@ function LowAmmoText.dofile(name)
 end
 
 -- keep-sorted start
+LowAmmoText.dofile("functions/ease")
 LowAmmoText.dofile("functions/tbl")
 -- keep-sorted end
 
