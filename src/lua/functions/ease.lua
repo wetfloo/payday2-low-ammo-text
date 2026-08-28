@@ -4,18 +4,6 @@ function LowAmmoText.ease.linear(x)
 	return x
 end
 
-function LowAmmoText.ease.in_sine(x)
-	return 1 - math.cos((x * math.pi) / 2)
-end
-
-function LowAmmoText.ease.out_sine(x)
-	return math.sin((x * math.pi) / 2)
-end
-
-function LowAmmoText.ease.in_out_sine(x)
-	return -(math.cos(math.pi * x) - 1) / 2
-end
-
 function LowAmmoText.ease.in_quad(x)
 	return x * x
 end
