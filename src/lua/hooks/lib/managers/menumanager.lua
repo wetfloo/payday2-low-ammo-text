@@ -1,5 +1,5 @@
 ---@return table|nil
-local function bullshit()
+local function blt_menu_items_mapping()
 	local file = io.open(LowAmmoText.mod_path .. "menus/blt_options.json", "r")
 	if not file then
 		return
@@ -70,7 +70,7 @@ Hooks:Add(
 				LowAmmoText._data = LowAmmoText.tbl.deep_clone(LowAmmoText._default_data)
 				LowAmmoText:save_configuration()
 
-				local items_mapping = bullshit() or {}
+				local items_mapping = blt_menu_items_mapping() or {}
 
 				for k, v in pairs(items_mapping) do
 					MenuHelper:ResetItemsToDefaultValue(
