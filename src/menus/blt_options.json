@@ -139,13 +139,7 @@
 				"low_ammo_text__item__pulse_text_ease_function__in_out_circ",
 				"low_ammo_text__item__pulse_text_ease_function__in_back",
 				"low_ammo_text__item__pulse_text_ease_function__out_back",
-				"low_ammo_text__item__pulse_text_ease_function__in_out_back",
-				"low_ammo_text__item__pulse_text_ease_function__in_elastic",
-				"low_ammo_text__item__pulse_text_ease_function__out_elastic",
-				"low_ammo_text__item__pulse_text_ease_function__in_out_elastic",
-				"low_ammo_text__item__pulse_text_ease_function__in_bounce",
-				"low_ammo_text__item__pulse_text_ease_function__out_bounce",
-				"low_ammo_text__item__pulse_text_ease_function__in_out_bounce"
+				"low_ammo_text__item__pulse_text_ease_function__in_out_back"
 			],
 			"item_values": [
 				"linear",
@@ -172,13 +166,7 @@
 				"in_out_circ",
 				"in_back",
 				"out_back",
-				"in_out_back",
-				"in_elastic",
-				"out_elastic",
-				"in_out_elastic",
-				"in_bounce",
-				"out_bounce",
-				"in_out_bounce"
+				"in_out_back"
 			],
 			"localized_items": true,
 			"value": "pulse_text_ease_function_key"
