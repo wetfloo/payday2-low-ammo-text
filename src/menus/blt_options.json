@@ -38,6 +38,7 @@
 			"max": 48,
 			"step": 1,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_font_size"
 		},
 		{
@@ -54,6 +55,7 @@
 			"max": 1000,
 			"step": 2,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_offset_x"
 		},
 		{
@@ -66,6 +68,7 @@
 			"max": 1000,
 			"step": 2,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_offset_y"
 		},
 		{
@@ -78,6 +81,7 @@
 			"max": 360,
 			"step": 7.5,
 			"show_value": true,
+			"display_precision": 1,
 			"value": "text_rot_deg"
 		},
 		{
@@ -94,6 +98,7 @@
 			"max": 3000,
 			"step": 20,
 			"show_value": true,
+			"display_precision": 0,
 			"value": "text_fade_duration_millis"
 		},
 		{
