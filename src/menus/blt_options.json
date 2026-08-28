@@ -69,6 +69,18 @@
 			"value": "text_offset_y"
 		},
 		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__text_rot_deg",
+			"callback": "low_ammo_text__menu_callback__text_rot_deg",
+			"title": "low_ammo_text__menu_component__text_rot_deg__title",
+			"description": "low_ammo_text__menu_component__text_rot_deg__desc",
+			"min": 0,
+			"max": 360,
+			"step": 7.5,
+			"show_value": true,
+			"value": "text_rot_deg"
+		},
+		{
 			"type": "divider",
 			"size": 8
 		},

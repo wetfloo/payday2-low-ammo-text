@@ -135,6 +135,16 @@ Hooks:Add(
 			end
 		end
 
+		function MenuCallbackHandler.low_ammo_text__menu_callback__text_rot_deg(_self, item)
+			local val = item:value()
+
+			LowAmmoText._data.text_rot_deg = val
+
+			if LowAmmoText.ammo_state_manager then
+				LowAmmoText.ammo_state_manager:set_rot_deg(val)
+			end
+		end
+
 		function MenuCallbackHandler.low_ammo_text__menu_callback__text_alpha(_self, item)
 			local val = item:value()
 

@@ -11,6 +11,7 @@
 ---@field color Color
 ---@field alpha number
 ---@field offset Offset
+---@field rot_deg number
 ---@field font_size number
 ---@field font Font
 
@@ -24,6 +25,7 @@
 ---@field set_offset fun(self: LowAmmoText.RenderedText, offset: Offset)
 ---@field set_offset_x fun(self: LowAmmoText.RenderedText, val: number)
 ---@field set_offset_y fun(self: LowAmmoText.RenderedText, val: number)
+---@field set_rot_deg fun(self: LowAmmoText.RenderedText, val: number)
 ---@field set_text_color fun(self: LowAmmoText.RenderedText, color: Color)
 ---@field set_s fun(self: LowAmmoText.RenderedText, s: string)
 ---@field set_alpha fun(self: LowAmmoText.RenderedText, val: number)
@@ -120,6 +122,16 @@ end
 ---@param val number
 function LowAmmoText.RenderedText:set_offset_y(val)
 	self._text_configuration.offset.y = val
+	self:_realign()
+end
+
+---@param val number
+function LowAmmoText.RenderedText:set_rot_deg(val)
+	self._text_configuration.rot_deg = val
+
+	self._text:rotate(val)
+	self._shadow:rotate(val)
+
 	self:_realign()
 end
 

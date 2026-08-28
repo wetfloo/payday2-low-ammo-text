@@ -12,6 +12,7 @@
 ---@field set_offset fun(self: LowAmmoText.AmmoStateManager, offset: Offset)
 ---@field set_offset_x fun(self: LowAmmoText.AmmoStateManager, val: number)
 ---@field set_offset_y fun(self: LowAmmoText.AmmoStateManager, val: number)
+---@field set_rot_deg fun(self: LowAmmoText.AmmoStateManager, val: number)
 ---@field set_alpha fun(self: LowAmmoText.AmmoStateManager, val: number)
 ---@field set_font_size fun(self: LowAmmoText.AmmoStateManager, val: number)
 ---@field update_state_values fun(self: LowAmmoText.AmmoStateManager, state_values: AmmoStateValues)
@@ -115,6 +116,11 @@ end
 ---@param val number
 function LowAmmoText.AmmoStateManager:set_offset_y(val)
 	self._rendered_text:set_offset_y(val)
+end
+
+---@param val number
+function LowAmmoText.AmmoStateManager:set_rot_deg(val)
+	self._rendered_text:set_rot_deg(val)
 end
 
 ---@param val number
