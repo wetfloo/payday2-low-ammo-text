@@ -1,3 +1,7 @@
+function LowAmmoText.ease.linear(x)
+	return x
+end
+
 function LowAmmoText.ease.in_sine(x)
 	return 1 - math.cos((x * math.pi) / 2)
 end
