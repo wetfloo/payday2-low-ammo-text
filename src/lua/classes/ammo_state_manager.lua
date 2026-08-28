@@ -9,6 +9,11 @@
 ---@class (exact) LowAmmoText.AmmoStateManager
 ---@field init fun(self: LowAmmoText.AmmoStateManager, rendered_text: LowAmmoText.RenderedText)
 ---@field destroy fun(self: LowAmmoText.AmmoStateManager)
+---@field set_offset fun(self: LowAmmoText.AmmoStateManager, offset: Offset)
+---@field set_offset_x fun(self: LowAmmoText.AmmoStateManager, val: number)
+---@field set_offset_y fun(self: LowAmmoText.AmmoStateManager, val: number)
+---@field set_alpha fun(self: LowAmmoText.AmmoStateManager, val: number)
+---@field set_font_size fun(self: LowAmmoText.AmmoStateManager, val: number)
 ---@field update_state_values fun(self: LowAmmoText.AmmoStateManager, state_values: AmmoStateValues)
 ---@field state_values AmmoStateValues
 ---@field private _state_values AmmoStateValues
