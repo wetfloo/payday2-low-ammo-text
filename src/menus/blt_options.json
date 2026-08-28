@@ -24,8 +24,8 @@
 			"description": "low_ammo_text__menu_component__text_alpha__desc",
 			"min": 0.0,
 			"max": 1.0,
-			"step": 0.01,
-			"show_value": true,
+			"step": 0.05,
+			"show_value": false,
 			"value": "text_alpha"
 		},
 		{
@@ -34,9 +34,9 @@
 			"callback": "low_ammo_text__menu_callback__text_font_size",
 			"title": "low_ammo_text__menu_component__text_font_size__title",
 			"description": "low_ammo_text__menu_component__text_font_size__desc",
-			"min": 1.0,
-			"max": 48.0,
-			"step": 0.5,
+			"min": 1,
+			"max": 48,
+			"step": 1,
 			"show_value": true,
 			"value": "text_font_size"
 		},
@@ -50,9 +50,9 @@
 			"callback": "low_ammo_text__menu_callback__text_offset_x",
 			"title": "low_ammo_text__menu_component__text_offset_x__title",
 			"description": "low_ammo_text__menu_component__text_offset_x__desc",
-			"min": -1000.0,
-			"max": 1000.0,
-			"step": 0.5,
+			"min": -1000,
+			"max": 1000,
+			"step": 2,
 			"show_value": true,
 			"value": "text_offset_x"
 		},
@@ -62,9 +62,9 @@
 			"callback": "low_ammo_text__menu_callback__text_offset_y",
 			"title": "low_ammo_text__menu_component__text_offset_y__title",
 			"description": "low_ammo_text__menu_component__text_offset_y__desc",
-			"min": -1000.0,
-			"max": 1000.0,
-			"step": 0.5,
+			"min": -1000,
+			"max": 1000,
+			"step": 2,
 			"show_value": true,
 			"value": "text_offset_y"
 		},
@@ -80,7 +80,7 @@
 			"description": "low_ammo_text__menu_component__text_fade_duration__desc",
 			"min": 0,
 			"max": 3000,
-			"step": 10,
+			"step": 20,
 			"show_value": true,
 			"value": "text_fade_duration_millis"
 		},
@@ -92,7 +92,7 @@
 			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
 			"min": 0,
 			"max": 400,
-			"step": 0.5,
+			"step": 20,
 			"show_value": false,
 			"value": "pulse_text_animation_speed_mul_log"
 		},
@@ -104,8 +104,8 @@
 			"description": "low_ammo_text__menu_component__pulse_text_animation_start__desc",
 			"min": 0,
 			"max": 1.0,
-			"step": 0.01,
-			"show_value": true,
+			"step": 0.05,
+			"show_value": false,
 			"value": "pulse_text_animation_start"
 		},
 		{
@@ -177,7 +177,7 @@
 			"description": "low_ammo_text__menu_component__threshold_low_ammo_clip__desc",
 			"min": 0,
 			"max": 1.0,
-			"step": 0.01,
+			"step": 0.05,
 			"show_value": false,
 			"value": "threshold_low_ammo_clip"
 		},
@@ -189,7 +189,7 @@
 			"description": "low_ammo_text__menu_component__threshold_low_ammo_total__desc",
 			"min": 0,
 			"max": 1.0,
-			"step": 0.01,
+			"step": 0.05,
 			"show_value": false,
 			"value": "threshold_low_ammo_total"
 		},
