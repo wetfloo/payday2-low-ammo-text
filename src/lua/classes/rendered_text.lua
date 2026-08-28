@@ -29,15 +29,27 @@
 ---@field set_alpha fun(self: LowAmmoText.RenderedText, val: number)
 ---@field show fun(self: LowAmmoText.RenderedText, fade_in_duration_secs: number)
 ---@field hide fun(self: LowAmmoText.RenderedText, fade_out_duration_secs: number)
+---@field hide fun(self: LowAmmoText.RenderedText): boolean
+---@field add_text_animator fun(self: LowAmmoText.RenderedText, k: string, animator: TextAnimatorFn)
 ---@field set_font_size fun(self: LowAmmoText.RenderedText, val: number)
 ---@field private _hud HUD
 ---@field private _panel HUDPanel
 ---@field private _s string
 ---@field private _text RenderedTextComponent
 ---@field private _text_configuration TextConfiguration
+---@field private _text_animators TextAnimatorsMap
 ---@field private _shadow RenderedTextComponent
 ---@field private _text_shadow_configuration TextConfiguration|nil
+---@field private _shadow_animators TextAnimatorsMap
 ---@field private _visible boolean
+
+---@alias TextAnimatorsMap { [string]: TextAnimator }
+
+---@class (exact) TextAnimator
+---@field fn TextAnimatorFn
+---@field active boolean
+
+---@alias TextAnimatorFn fun(o: RenderedTextComponent): boolean|nil
 
 ---@alias RenderedTextComponent any
 
@@ -66,7 +78,7 @@ function LowAmmoText.RenderedText:init(param)
 	}
 
 	if self._text_shadow_configuration then
-		local params_shadow = LowAmmoText.tbl.shallow_copy(params_text)
+		local params_shadow = clone(params_text)
 		params_shadow.color = param.text_shadow_configuration.color
 		-- Render shadow first, otherwise we get overlap.
 		self._shadow = self._panel:text(params_shadow)
@@ -75,6 +87,10 @@ function LowAmmoText.RenderedText:init(param)
 	self._text = self._panel:text(params_text)
 
 	self:set_alpha(self._text_configuration.alpha)
+
+	self._text_animators = {}
+	self._shadow_animators = {}
+
 	self:_realign()
 end
 
@@ -191,6 +207,84 @@ function LowAmmoText.RenderedText:hide(fade_out_duration_secs)
 			o:set_alpha((1 - p) * t._text_configuration.alpha)
 		end)
 	end)
+end
+
+---@return boolean
+function LowAmmoText.RenderedText:visible()
+	return self._visible
+end
+
+---@param k string
+---@param animator TextAnimatorFn
+function LowAmmoText.RenderedText:add_text_animator(k, animator)
+	local addition = {
+		active = true,
+		animator = animator,
+	}
+	self._text_animators[k] = addition
+
+	local t = self
+	self._text:animate(function(o)
+		local active = true
+
+		while active do
+			if t._visible then
+				local needs_realign = animator(o) or false
+				if needs_realign then
+					t._text:_realign()
+				end
+
+				active = (t._text_animators[k] and t._text_animators[k].active) or false
+			end
+
+			coroutine.yield()
+		end
+	end)
+end
+
+---@param k string
+function LowAmmoText.RenderedText:stop_text_animator(k)
+	local animator = self._text_animators[k]
+	if not animator then
+		return
+	end
+
+	animator.active = false
+end
+
+---@param k string
+---@param animator TextAnimatorFn
+function LowAmmoText.RenderedText:add_shadow_animator(k, animator)
+	local addition = {
+		active = true,
+		animator = animator,
+	}
+	self._shadow_animators[k] = addition
+
+	local t = self
+	self._shadow:animate(function(o)
+		local active = true
+
+		while active do
+			local needs_realign = animator(o) or false
+			if needs_realign then
+				t._shadow:_realign()
+			end
+
+			active = (t._shadow_animators[k] and t._shadow_animators[k].active) or false
+			coroutine.yield()
+		end
+	end)
+end
+
+---@param k string
+function LowAmmoText.RenderedText:stop_shadow_animator(k)
+	local animator = self._shadow_animators[k]
+	if not animator then
+		return
+	end
+
+	animator.active = false
 end
 
 ---@param val number

@@ -6,6 +6,17 @@
 	"back_callback": "low_ammo_text__menu_callback__closed",
 	"items": [
 		{
+			"type": "button",
+			"id": "low_ammo_text__menu_component__reset_to_default",
+			"callback": "low_ammo_text__menu_callback__reset_to_default",
+			"title": "low_ammo_text__menu_component__reset_to_default__title",
+			"description": "low_ammo_text__menu_component__reset_to_default__desc"
+		},
+		{
+			"type": "divider",
+			"size": 8
+		},
+		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__text_alpha",
 			"callback": "low_ammo_text__menu_callback__text_alpha",
@@ -28,6 +39,10 @@
 			"step": 0.5,
 			"show_value": true,
 			"value": "text_font_size"
+		},
+		{
+			"type": "divider",
+			"size": 8
 		},
 		{
 			"type": "slider",
@@ -54,6 +69,10 @@
 			"value": "text_offset_y"
 		},
 		{
+			"type": "divider",
+			"size": 8
+		},
+		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__text_fade_duration",
 			"callback": "low_ammo_text__menu_callback__text_fade_duration_millis",
@@ -67,27 +86,113 @@
 		},
 		{
 			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_speed_mul",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_speed_mul_log",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_speed_mul__desc",
+			"min": 0,
+			"max": 400,
+			"step": 0.5,
+			"show_value": false,
+			"value": "pulse_text_animation_speed_mul_log"
+		},
+		{
+			"type": "slider",
+			"id": "low_ammo_text__menu_component__pulse_text_animation_start",
+			"callback": "low_ammo_text__menu_callback__pulse_text_animation_start",
+			"title": "low_ammo_text__menu_component__pulse_text_animation_start__title",
+			"description": "low_ammo_text__menu_component__pulse_text_animation_start__desc",
+			"min": 0,
+			"max": 1.0,
+			"step": 0.01,
+			"show_value": true,
+			"value": "pulse_text_animation_start"
+		},
+		{
+			"type": "divider",
+			"size": 8
+		},
+		{
+			"type": "slider",
 			"id": "low_ammo_text__menu_component__threshold_low_ammo_clip",
-			"callback": "low_ammo_text__menu_callback__threshold_low_ammo_clip_percent",
+			"callback": "low_ammo_text__menu_callback__threshold_low_ammo_clip",
 			"title": "low_ammo_text__menu_component__threshold_low_ammo_clip__title",
 			"description": "low_ammo_text__menu_component__threshold_low_ammo_clip__desc",
 			"min": 0,
-			"max": 100,
-			"step": 1,
-			"show_value": true,
-			"value": "threshold_low_ammo_clip_percent"
+			"max": 1.0,
+			"step": 0.01,
+			"show_value": false,
+			"value": "threshold_low_ammo_clip"
 		},
 		{
 			"type": "slider",
 			"id": "low_ammo_text__menu_component__threshold_low_ammo_total",
-			"callback": "low_ammo_text__menu_callback__threshold_low_ammo_total_percent",
+			"callback": "low_ammo_text__menu_callback__threshold_low_ammo_total",
 			"title": "low_ammo_text__menu_component__threshold_low_ammo_total__title",
 			"description": "low_ammo_text__menu_component__threshold_low_ammo_total__desc",
 			"min": 0,
-			"max": 100,
-			"step": 1,
-			"show_value": true,
-			"value": "threshold_low_ammo_total_percent"
+			"max": 1.0,
+			"step": 0.01,
+			"show_value": false,
+			"value": "threshold_low_ammo_total"
+		},
+		{
+			"type": "divider",
+			"size": 8
+		},
+		{
+			"type": "toggle",
+			"id": "low_ammo_text__menu_component__toggle_state_no_ammo",
+			"title": "low_ammo_text__menu_component__toggle_state_no_ammo__title",
+			"description": "low_ammo_text__menu_component__toggle_state_no_ammo__desc",
+			"callback": "low_ammo_text__menu_callback__toggle_state_no_ammo",
+			"value": "state_enabled_no_ammo",
+			"default_value": true
+		},
+		{
+			"type": "toggle",
+			"id": "low_ammo_text__menu_component__toggle_state_low_total_ammo",
+			"title": "low_ammo_text__menu_component__toggle_state_low_total_ammo__title",
+			"description": "low_ammo_text__menu_component__toggle_state_low_total_ammo__desc",
+			"callback": "low_ammo_text__menu_callback__toggle_state_low_total_ammo",
+			"value": "state_enabled_low_total_ammo",
+			"default_value": true
+		},
+		{
+			"type": "toggle",
+			"id": "low_ammo_text__menu_component__toggle_state_clip_empty",
+			"title": "low_ammo_text__menu_component__toggle_state_clip_empty__title",
+			"description": "low_ammo_text__menu_component__toggle_state_clip_empty__desc",
+			"callback": "low_ammo_text__menu_callback__toggle_state_clip_empty",
+			"value": "state_enabled_clip_empty",
+			"default_value": true
+		},
+		{
+			"type": "toggle",
+			"id": "low_ammo_text__menu_component__toggle_state_low_ammo_clip",
+			"title": "low_ammo_text__menu_component__toggle_state_low_ammo_clip__title",
+			"description": "low_ammo_text__menu_component__toggle_state_low_ammo_clip__desc",
+			"callback": "low_ammo_text__menu_callback__toggle_state_low_ammo_clip",
+			"value": "state_enabled_low_ammo_clip",
+			"default_value": true
+		},
+		{
+			"type": "toggle",
+			"id": "low_ammo_text__menu_component__toggle_state_bulletstorm",
+			"title": "low_ammo_text__menu_component__toggle_state_bulletstorm__title",
+			"description": "low_ammo_text__menu_component__toggle_state_bulletstorm__desc",
+			"callback": "low_ammo_text__menu_callback__toggle_state_bulletstorm",
+			"value": "state_enabled_bulletstorm",
+			"default_value": true
+		},
+		{
+			"type": "toggle",
+			"id": "low_ammo_text__menu_component__toggle_state_swan_song_aced",
+			"title": "low_ammo_text__menu_component__toggle_state_swan_song_aced__title",
+			"description": "low_ammo_text__menu_component__toggle_state_swan_song_aced__desc",
+			"callback": "low_ammo_text__menu_callback__toggle_state_swan_song_aced",
+			"value": "state_enabled_swan_song_aced",
+			"default_value": true
 		}
 	]
 }
