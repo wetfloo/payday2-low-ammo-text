@@ -129,8 +129,8 @@ end
 function LowAmmoText.RenderedText:set_rot_deg(val)
 	self._text_configuration.rot_deg = val
 
-	self._text:rotate(val)
-	self._shadow:rotate(val)
+	self._text:set_rotation(val)
+	self._shadow:set_rotation(val)
 
 	self:_realign()
 end
