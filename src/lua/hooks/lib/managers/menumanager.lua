@@ -70,7 +70,7 @@ Hooks:Add(
 				LowAmmoText._data = LowAmmoText.tbl.deep_clone(LowAmmoText._default_data)
 				LowAmmoText:save_configuration()
 
-				local items_mapping = bullshit(menu, reset_confirmed) or {}
+				local items_mapping = bullshit() or {}
 
 				for k, v in pairs(items_mapping) do
 					MenuHelper:ResetItemsToDefaultValue(
