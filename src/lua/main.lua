@@ -3,6 +3,9 @@
 ---@alias HUD any
 ---@alias HUDPanel any
 
+---@alias BLTHookClass any
+---@alias BLTHookFunctionName string
+
 _G.LowAmmoText = _G.LowAmmoText or {}
 
 LowAmmoText.mod_name = LowAmmoText.mod_name or "LowAmmoText"
