@@ -33,6 +33,7 @@
 ---@field hide fun(self: LowAmmoText.RenderedText, fade_out_duration_secs: number)
 ---@field hide fun(self: LowAmmoText.RenderedText): boolean
 ---@field add_text_animator fun(self: LowAmmoText.RenderedText, k: string, animator: TextAnimatorFn)
+---@field add_shadow_animator fun(self: LowAmmoText.RenderedText, k: string, animator: TextAnimatorFn)
 ---@field set_font_size fun(self: LowAmmoText.RenderedText, val: number)
 ---@field private _hud HUD
 ---@field private _panel HUDPanel
