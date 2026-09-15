@@ -229,77 +229,23 @@ end
 ---@param k string
 ---@param animator TextAnimatorFn
 function LowAmmoText.RenderedText:add_text_animator(k, animator)
-	local addition = {
-		active = true,
-		animator = animator,
-	}
-	self._text_animators[k] = addition
-
-	local t = self
-	self._text:animate(function(o)
-		local active = true
-		local time = 0
-
-		while active do
-			local dt = coroutine.yield()
-			time = time + dt
-
-			if t._visible then
-				local needs_realign = animator(o, time) or false
-				if needs_realign then
-					t._text:_realign()
-				end
-
-				active = (t._text_animators[k] and t._text_animators[k].active) or false
-			end
-		end
-	end)
+	self:_add_text_component_animator(self._text, self._text_animators, k, animator)
 end
 
 ---@param k string
 function LowAmmoText.RenderedText:stop_text_animator(k)
-	local animator = self._text_animators[k]
-	if not animator then
-		return
-	end
-
-	animator.active = false
+	self._stop_text_component_animator(self._text_animators, k)
 end
 
 ---@param k string
 ---@param animator TextAnimatorFn
 function LowAmmoText.RenderedText:add_shadow_animator(k, animator)
-	local addition = {
-		active = true,
-		animator = animator,
-	}
-	self._shadow_animators[k] = addition
-
-	local t = self
-	self._shadow:animate(function(o)
-		local active = true
-
-		while active do
-			local dt = coroutine.yield()
-
-			local needs_realign = animator(o, dt) or false
-			if needs_realign then
-				t._shadow:_realign()
-			end
-
-			active = (t._shadow_animators[k] and t._shadow_animators[k].active) or false
-		end
-	end)
+	self:_add_text_component_animator(self._shadow, self._shadow_animators, k, animator)
 end
 
 ---@param k string
 function LowAmmoText.RenderedText:stop_shadow_animator(k)
-	local animator = self._shadow_animators[k]
-	if not animator then
-		return
-	end
-
-	animator.active = false
+	self._stop_text_component_animator(self._shadow_animators, k)
 end
 
 ---@param val number
@@ -310,6 +256,48 @@ function LowAmmoText.RenderedText:set_font_size(val)
 	self._shadow:set_font_size(val)
 
 	self:_realign()
+end
+
+function LowAmmoText.RenderedText:_add_text_component_animator(
+	text_component,
+	existing_animators,
+	k,
+	animator
+)
+	local addition = {
+		active = true,
+		animator = animator,
+	}
+	existing_animators[k] = addition
+
+	local t = self
+	text_component:animate(function(o)
+		local active = true
+		local time = 0
+
+		while active do
+			local dt = coroutine.yield()
+			time = time + dt
+
+			if t._visible then
+				local needs_realign = animator(o, time) or false
+				if needs_realign then
+					t:_realign()
+				end
+
+				active = (existing_animators[k] and existing_animators[k].active) or false
+			end
+		end
+	end)
+end
+
+function LowAmmoText.RenderedText._stop_text_component_animator(existing_animators, k)
+	local animator = existing_animators[k]
+	if not animator then
+		return
+	end
+
+	animator.active = false
 end
 
 ---@private
