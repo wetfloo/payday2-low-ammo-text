@@ -69,7 +69,7 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 	self._rendered_text = rendered_text
 
 	local t = self
-	self._rendered_text:add_text_animator("ammo_state_manager_text_animator", function(o)
+	self._rendered_text:add_text_animator("ammo_state_manager_text_animator", function(o, time)
 		local preset_color = t._preset and t._preset.color
 		if not preset_color then
 			return
@@ -80,7 +80,6 @@ function LowAmmoText.AmmoStateManager:init(rendered_text)
 			return
 		end
 
-		local time = Application:time()
 		local base_time_mul = 50
 		local product = time * base_time_mul * LowAmmoText._data.pulse_text_animation_speed_mul
 		local sine_norm = (math.sin(product) + 1) / 2

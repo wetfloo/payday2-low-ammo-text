@@ -51,7 +51,7 @@
 ---@field fn TextAnimatorFn
 ---@field active boolean
 
----@alias TextAnimatorFn fun(o: RenderedTextComponent): boolean|nil
+---@alias TextAnimatorFn fun(o: RenderedTextComponent, time: number): boolean|nil
 
 ---@alias RenderedTextComponent any
 
@@ -238,18 +238,20 @@ function LowAmmoText.RenderedText:add_text_animator(k, animator)
 	local t = self
 	self._text:animate(function(o)
 		local active = true
+		local time = 0
 
 		while active do
+			local dt = coroutine.yield()
+			time = time + dt
+
 			if t._visible then
-				local needs_realign = animator(o) or false
+				local needs_realign = animator(o, time) or false
 				if needs_realign then
 					t._text:_realign()
 				end
 
 				active = (t._text_animators[k] and t._text_animators[k].active) or false
 			end
-
-			coroutine.yield()
 		end
 	end)
 end
@@ -278,13 +280,14 @@ function LowAmmoText.RenderedText:add_shadow_animator(k, animator)
 		local active = true
 
 		while active do
-			local needs_realign = animator(o) or false
+			local dt = coroutine.yield()
+
+			local needs_realign = animator(o, dt) or false
 			if needs_realign then
 				t._shadow:_realign()
 			end
 
 			active = (t._shadow_animators[k] and t._shadow_animators[k].active) or false
-			coroutine.yield()
 		end
 	end)
 end
