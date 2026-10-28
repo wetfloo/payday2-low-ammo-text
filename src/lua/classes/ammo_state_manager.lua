@@ -154,14 +154,14 @@ function LowAmmoText.AmmoStateManager:_on_state_value_update()
 
 	for _, preset_curr in ipairs(presets_sorted) do
 		local k = preset_curr.k
-		local found = self._state_values[k]
+		local active = self._state_values[k]
 
 		local enabled = LowAmmoText._data["state_enabled_" .. k]
 		if enabled == nil then
 			enabled = true
 		end
 
-		if found and enabled then
+		if active and enabled then
 			preset = preset_curr
 			break
 		end
