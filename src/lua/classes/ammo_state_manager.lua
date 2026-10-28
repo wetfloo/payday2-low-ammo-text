@@ -22,7 +22,7 @@
 
 ---@class AmmoStatePreset
 ---@field k string
----@field s_id string
+---@field localized_str_id string
 ---@field color Color
 
 -- We depend on this, so better init it just in case.
@@ -31,30 +31,34 @@ LowAmmoText.dofile("classes/rendered_text")
 LowAmmoText.AmmoStateManager = LowAmmoText.AmmoStateManager or class()
 
 local presets_sorted = {
-	{ k = "no_ammo", s_id = "low_ammo_text__ammo_state__no_ammo", color = Color(1.0, 0.0, 0.0) },
+	{
+		k = "no_ammo",
+		localized_str_id = "low_ammo_text__ammo_state__no_ammo",
+		color = Color(1.0, 0.0, 0.0),
+	},
 	{
 		k = "clip_empty",
-		s_id = "low_ammo_text__ammo_state__clip_empty",
+		localized_str_id = "low_ammo_text__ammo_state__clip_empty",
 		color = Color(1.0, 0.98, 0.35),
 	},
 	{
 		k = "swan_song_aced",
-		s_id = "low_ammo_text__ammo_state__swan_song_aced",
+		localized_str_id = "low_ammo_text__ammo_state__swan_song_aced",
 		color = Color(0.24, 0.66, 0.93),
 	},
 	{
 		k = "bulletstorm",
-		s_id = "low_ammo_text__ammo_state__bulletstorm",
+		localized_str_id = "low_ammo_text__ammo_state__bulletstorm",
 		color = Color(0.5, 0.9, 0.28),
 	},
 	{
 		k = "low_total_ammo",
-		s_id = "low_ammo_text__ammo_state__low_total",
+		localized_str_id = "low_ammo_text__ammo_state__low_total",
 		color = Color(1.0, 0.5, 0.0),
 	},
 	{
 		k = "low_ammo_clip",
-		s_id = "low_ammo_text__ammo_state__low_clip",
+		localized_str_id = "low_ammo_text__ammo_state__low_clip",
 		color = Color(0.9, 0.9, 0.9),
 	},
 }
@@ -164,7 +168,7 @@ function LowAmmoText.AmmoStateManager:_on_state_value_update()
 		return
 	end
 
-	self._rendered_text:set_s(managers.localization:text(preset.s_id))
+	self._rendered_text:set_s(managers.localization:text(preset.localized_str_id))
 	self._rendered_text:set_text_color(preset.color)
 	self._rendered_text:show(LowAmmoText._data.text_fade_duration_secs)
 end
