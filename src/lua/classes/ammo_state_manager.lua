@@ -136,6 +136,12 @@ function LowAmmoText.AmmoStateManager:set_font_size(val)
 	self._rendered_text:set_font_size(val)
 end
 
+--- Update the current state values.
+---
+--- For example, setting [no_ammo] and [clip_empty] to `true`
+--- tells [AmmoStateManager](LowAmmoText.AmmoStateManager)
+--- that the player has no ammo and that their clip is empty.
+---
 ---@param state_values AmmoStateValues
 function LowAmmoText.AmmoStateManager:update_state_values(state_values)
 	self._state_values = LowAmmoText.tbl.fill_missing(state_values, self._state_values)
